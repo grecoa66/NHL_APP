@@ -15,9 +15,14 @@ export class PlayersComponent {
   getAllPlayers(){
     this.playerService.getAllPlayers()
       .subscribe(res => {
-        console.log(res);
-      })
+        let players = JSON.parse(res);
 
+        for(let player in players) {
+          if(players.hasOwnProperty(player))
+            console.log(players[player]);
+        }
+        //console.log(res);
+      });
 
   }
 
