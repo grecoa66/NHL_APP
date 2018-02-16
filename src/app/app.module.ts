@@ -1,22 +1,29 @@
+// Dependencies
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from "@angular/common/http";
 
-
+//Components
 import { AppComponent } from './app.component';
-import {AppService} from './app.service';
-import {HttpModule} from "@angular/http";
+import { PlayersComponent } from './players/players.component';
 
+
+//Services
+import {AppService} from './app.service';
+import {PlayersService} from './players/services/players.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [
-    AppService
+    AppService,
+    PlayersService
   ],
   bootstrap: [AppComponent]
 })
