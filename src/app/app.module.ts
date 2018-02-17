@@ -11,11 +11,13 @@ import {PlayersComponent} from './players/players.component';
 //Services
 import {AppService} from './app.service';
 import {PlayersService} from './players/services/players.service';
+import { PlayerCardComponent } from './player-card/player-card.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        PlayersComponent
+        PlayersComponent,
+        PlayerCardComponent
     ],
     imports: [
         BrowserModule,

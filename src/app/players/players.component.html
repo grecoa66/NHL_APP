@@ -1,13 +1,22 @@
 <h1>Here are the players!</h1>
 <br>
 
+<div class="container-fluid">
+    <h2>Players</h2>
+    <ul class="player-table">
+        <li *ngFor="let player of players">
+            {{player.FirstName}} {{player.LastName}}
+            <button
+                class="btn btn-secondary"
+                (click)="selectPlayer(player)">Click
+            </button>
+        </li>
+    </ul>
 
-<button
-    class="btn btn-primary"
-    (click)="getAllPlayers()">
-    Get Players
-</button>
+    <app-player-card [player]="selectedPlayers[0]" ></app-player-card>
+    <app-player-card [player]="selectedPlayers[1]" ></app-player-card>
+    <app-player-card [player]="selectedPlayers[2]" ></app-player-card>
+    <app-player-card [player]="selectedPlayers[3]" ></app-player-card>
+    <app-player-card [player]="selectedPlayers[4]" ></app-player-card>
 
-<ul>
-    <li *ngFor="let player of players">{{player.FirstName}} {{player.LastName}}</li>
-</ul>
+</div>
