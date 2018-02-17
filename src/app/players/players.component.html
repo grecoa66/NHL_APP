@@ -1,12 +1,13 @@
 <h1>Here are the players!</h1>
 <br>
+
+
 <button
-  class="btn btn-primary"
-  (click)="getAllPlayers()">
-  Get Players
+    class="btn btn-primary"
+    (click)="getAllPlayers()">
+    Get Players
 </button>
 
-<ul
-  *ngFor="let player of players">
-  <li>{{player.firstName}} {{player.lastName}}</li>
+<ul>
+    <li *ngFor="let player of players">{{player.FirstName}} {{player.LastName}}</li>
 </ul>

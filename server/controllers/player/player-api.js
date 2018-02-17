@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
       'password': process.env.MYSPORTSFEEDSKEY
     }
   }).then(response => {
+    console.log(typeof response);
     res.send(response.data.rosterplayers.playerentry);
   }).catch(error => {
     console.log('ERROR', error);

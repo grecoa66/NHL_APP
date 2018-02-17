@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class PlayersService{
+export class PlayersService {
 
-  url : string;
+    url: string;
 
-  constructor(private http : HttpClient ) {
-    this.url = 'api/players';
-  }
+    constructor(private http: HttpClient) {
+        this.url = 'api/players';
+    }
 
-  getAllPlayers(){
-    return this.http.get(this.url, {responseType : 'text'});
-  }
+    getAllPlayers() {
+        return this.http.get(this.url, {responseType: 'json'});
+    }
 
 
 }

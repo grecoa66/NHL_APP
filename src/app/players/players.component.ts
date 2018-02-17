@@ -1,29 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PlayersService} from "./services/players.service";
 
 @Component({
-  selector: 'app-players',
-  templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+    selector: 'app-players',
+    templateUrl: './players.component.html',
+    styleUrls: ['./players.component.css']
 })
 export class PlayersComponent {
 
-  players : any[];
+    players: any[] = [];
 
-  constructor(private playerService : PlayersService) { }
+    constructor(private playerService: PlayersService) {
+    }
 
-  getAllPlayers(){
-    this.playerService.getAllPlayers()
-      .subscribe(res => {
-        let players = JSON.parse(res);
 
-        for(let player in players) {
-          if(players.hasOwnProperty(player))
-            console.log(players[player]);
-        }
-        //console.log(res);
-      });
+    /**
+     * Call the player service and put all the players info
+     * into an array that is available to the template.
+     */
+    getAllPlayers() {
 
-  }
+        this.playerService.getAllPlayers()
+            .subscribe(res => {
+                let playerData = res;
+                console.log('Res inside the componen: ', res);
+
+                _.forEach(playerData, (player) => {
+                    this.players.push(playerData[player].player);
+                });
+
+            });
+    }
 
 }
