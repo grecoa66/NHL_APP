@@ -11,10 +11,10 @@ export class PlayersComponent implements OnInit{
 
     //List of all players
     players: any[] = [];
+    teamStyle = 'NJD';
 
     // Selected player
     selectedPlayer = {};
-    selectedPlayers = [];
     playerSelected = false;
 
     constructor(private playerService: PlayersService) { }
@@ -29,6 +29,7 @@ export class PlayersComponent implements OnInit{
         // subscribe to service call
         this.playerService.getAllPlayers()
             .subscribe(res => {
+                // Pass result to the player builder service
                 this.players = this.playerService.playerBuilder(res);
             });
     }
@@ -36,7 +37,6 @@ export class PlayersComponent implements OnInit{
     selectPlayer(player){
         this.playerSelected = true;
         this.selectedPlayer = player;
-        this.selectedPlayers.push(player);
         this.getPlayerInfo(player);
     }
 

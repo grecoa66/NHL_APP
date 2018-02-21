@@ -1,0 +1,24 @@
+<table class="table table-hover" >
+    <thead class="{{teamStyle}}" >
+        <tr>
+            <td scope="col">Name</td>
+            <td scope="col">#</td>
+            <td scope="col">Position</td>
+            <td scope="col">Age</td>
+            <td scope="col">Ht</td>
+            <td scope="col">Wt</td>
+            <td scope="col">Hometown</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of players">
+            <td>{{player.FirstName}} {{player.LastName}}</td>
+            <td>{{player.JerseyNumber}}</td>
+            <td>{{player.Position}}</td>
+            <td>{{player.Age}}</td>
+            <td>{{player.Height}}</td>
+            <td>{{player.Weight}}</td>
+            <td>{{player.BirthCity}} {{player.BirthCountry}}</td>
+        </tr>
+    </tbody>
+</table>
