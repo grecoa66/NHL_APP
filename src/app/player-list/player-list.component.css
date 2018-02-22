@@ -1,3 +1,189 @@
-thead.NJD td{
-    background-color: red;
+/* Metro */
+thead.NJD td {
+    background-color: #d3092a;
+    border: 2px solid black;
+    color: white;
 }
+
+thead.NYR td {
+    background-color: #043c95;
+    border: 2px solid #dc0b12;
+    color: white;
+}
+
+thead.WSH td {
+    background-color: #031f40;
+    border: 2px solid #cd0831;
+    color: white;
+}
+
+thead.PIT td {
+    background-color: #ffb743;
+    border: 2px solid white;
+    color: black;
+}
+
+thead.CBJ td {
+    background-color: #002751;
+    border: 2px solid white;
+    color: #e3103b;
+}
+
+thead.NYI td {
+    background-color: #005496;
+    border: 2px solid white;
+    color: #f87b40;
+}
+
+thead.PHI td {
+    background-color: #f97749;
+    border: 2px solid black;
+    color: white;
+}
+
+thead.CAR td {
+    background-color: black;
+    border: 2px solid #e7002a;
+    color: white;
+}
+
+/* Atlantic */
+
+thead.BOS td {
+    background-color: #ffb440;
+    border: 2px solid white;
+    color: black;
+}
+
+thead.MTL td {
+    background-color: #b31b2f;
+    border: 2px solid #1b2364;
+    color: white;
+}
+
+thead.OTT td {
+    background-color: #c19031;
+    border: 2px solid #d3092a;
+    color: black;
+}
+
+thead.TOR td {
+    background-color: #003d7a;
+    border: 2px solid white;
+    color: white;
+}
+
+thead.TBL td {
+    background-color: #0a3268;
+    border: 2px solid white;
+    color: white;
+}
+
+thead.FLO td {
+    background-color: #cd0831;
+    border: 2px solid #ba9660;
+    color: white;
+}
+
+thead.DET td {
+    background-color: #d3092a;
+    border: 2px solid white;
+    color: white;
+}
+
+thead.BUF td {
+    background-color: #234571;
+    border: 2px solid #ffb440;
+    color: white;
+}
+
+/* Western */
+
+thead.CHI td {
+    background-color: #d4002f;
+    border: 2px solid black;
+    color: white;
+}
+
+thead.MIN td {
+    background-color: #004933;
+    border: 2px solid #b31b28;
+    color: white;
+}
+
+thead.STL td {
+    background-color: #033182;
+    border: 2px solid #ffb440;
+    color: white;
+}
+
+thead.NSH td {
+    background-color: #ffb73d;
+    border: 2px solid white;
+    color: #001e41;
+}
+
+thead.WPJ td {
+    background-color: #031f3f;
+    border: 2px solid #b0122e;
+    color: #8e9090;
+}
+
+thead.DAL td {
+    background-color: #00694a;
+    border: 2px solid black;
+    color: white;
+}
+
+thead.COL td {
+    background-color: #71263c;
+    border: 2px solid #1e618e;
+    color: white;
+}
+
+/* Pacific */
+
+thead.ANA td {
+    background-color: black;
+    border: 2px solid #fe5322;
+    color: #b69762;
+}
+
+thead.EDM td {
+    background-color: #ea6931;
+    border: 2px solid #003972;
+    color: white;
+}
+
+thead.SJS td {
+    background-color: black;
+    border: 2px solid #f88e3a;
+    color: #008694;
+}
+
+thead.CGY td {
+    background-color: #d3092a;
+    border: 2px solid #f5bb62;
+    color: #f5bb62;
+}
+
+thead.LAK td {
+    background-color: black;
+    border: 2px solid #979894;
+    color: white;
+}
+
+thead.ARI td {
+    background-color: #8a2332;
+    border: 2px solid black;
+    color: #dfcba6;
+}
+
+thead.VAN td {
+    background-color: #061d2b;
+    border: 2px solid #012157;
+    color: white;
+}
+
+
+
