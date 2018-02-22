@@ -11,7 +11,7 @@ export class PlayersComponent implements OnInit{
 
     //List of all players
     players: any[] = [];
-    teamStyle = 'ARI';
+    teamStyle = 'NYI';
 
     // Selected player
     selectedPlayer = {};
