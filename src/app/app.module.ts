@@ -15,14 +15,9 @@ import { PlayerCardComponent } from './players/player-card/player-card.component
 import {PlayerListComponent} from './players/player-list/player-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
-import {RouterModule, Routes} from '@angular/router';
 import { TeamsComponent } from './teams/teams.component';
-
-// Configure navigation routes
-const appRoutes: Routes = [
-    {path: 'teams', component : TeamsComponent},
-    {path: 'players', component : PlayersComponent}
-];
+import {AppRoutingModule} from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 // All app components and dependencies
 @NgModule({
@@ -33,15 +28,14 @@ const appRoutes: Routes = [
         PlayerCardComponent,
         HomePageComponent,
         HeaderComponent,
-        TeamsComponent
+        TeamsComponent,
+        PageNotFoundComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        RouterModule.forRoot(
-            appRoutes,
-            {enableTracing: true}
-        )
+        AppRoutingModule
+
     ],
     providers: [
         AppService,
