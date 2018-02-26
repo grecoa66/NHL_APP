@@ -8,7 +8,8 @@ const urlList = require('../../common/url-list');
  * This route will return all the players from the specific year
  */
 router.get('/:year', (req, res) => {
-  let fullUrl = urlList.nhl_base_url + `${req.param('year')}/cumulative_player_stats.json`;
+  let fullUrl = urlList.nhl_base_url +
+      `${req.param('year')}/cumulative_player_stats.json`;
 
   axios.get(fullUrl, {
     auth: {
@@ -23,9 +24,8 @@ router.get('/:year', (req, res) => {
 });
 
 router.get('/:year/:playerName', (req, res) => {
-  //res.send(`${req.param('playerName')} is in the building! It is the year ${req.param('year')}`);
-
-    let fullUrl = urlList.nhl_base_url + `${req.param('year')}/cumulative_player_stats.json?player=${req.param('playerName')}`;
+    let fullUrl = urlList.nhl_base_url +
+        `${req.param('year')}/cumulative_player_stats.json?player=${req.param('playerName')}`;
 
     axios.get(fullUrl, {
         auth: {
