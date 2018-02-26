@@ -3,9 +3,12 @@ const router = express.Router();
 const axios = require('axios');
 const urlList = require('../../common/url-list');
 
-router.get('/', (req, res) => {
-  //TODO: This shouldn't be just the devils, this should be all
-  let fullUrl = urlList.nhl_base_url + '2016-2017-regular/roster_players.json';
+/**
+ * This route will get the players for the specified year.
+ * This route will return all the players from the specific year
+ */
+router.get('/:year', (req, res) => {
+  let fullUrl = urlList.nhl_base_url + `${req.param('year')}/cumulative_player_stats.json`;
 
   axios.get(fullUrl, {
     auth: {
@@ -13,14 +16,27 @@ router.get('/', (req, res) => {
       'password': process.env.MYSPORTSFEEDSKEY
     }
   }).then(response => {
-    res.send(response.data.rosterplayers.playerentry);
+    res.send(response.data.cumulativeplayerstats.playerstatsentry);
   }).catch(error => {
     console.log('ERROR', error);
-  })
+  });
 });
 
-router.get('/:playerName', (req, res) => {
-  res.send(req.param('playerName') + ' is in the building!');
+router.get('/:year/:playerName', (req, res) => {
+  //res.send(`${req.param('playerName')} is in the building! It is the year ${req.param('year')}`);
+
+    let fullUrl = urlList.nhl_base_url + `${req.param('year')}/cumulative_player_stats.json?player=${req.param('playerName')}`;
+
+    axios.get(fullUrl, {
+        auth: {
+            'username': process.env.MYSPORTSFEEDSUSER,
+            'password': process.env.MYSPORTSFEEDSKEY
+        }
+    }).then(response => {
+        res.send(response.data.cumulativeplayerstats.playerstatsentry);
+    }).catch(error => {
+        console.log('ERROR', error);
+    });
 });
 
 module.exports = router;
