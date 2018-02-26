@@ -9,7 +9,7 @@ export class PlayersService {
     url: string;
 
     constructor(private http: HttpClient) {
-        this.url = 'api/players';
+        this.url = 'api/players/2016-2017-regular';
     }
 
     getAllPlayers() {
