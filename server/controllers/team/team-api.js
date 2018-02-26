@@ -18,7 +18,7 @@ router.get('/:year/:teamName', (req, res) => {
         }
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
-    }).catch(error => {
+    }).catch(error => { 
         console.log('ERROR', error);
     });
 
