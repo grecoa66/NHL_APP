@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td>League Rank</td>
+            <td>Team</td>
+            <td>City</td>
+            <td>Wins</td>
+            <td>Losses</td>
+            <td>Overtime Losses</td>
+            <td>Points</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let team of teams">
+            <td>{{team._rank}}</td>
+            <td>{{team._name}}</td>
+            <td>{{team._city}}</td>
+            <td>{{team._wins}}</td>
+            <td>{{team._losses}}</td>
+            <td>{{team._overtimeLosses}}</td>
+            <td>{{team._points}}</td>
+        </tr>
+    </tbody>
+</table>

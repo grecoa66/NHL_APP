@@ -22,8 +22,6 @@ export class PlayersService {
         let playerData : any = data;
         // Put all players into js array
         _.forEach(playerData, (data) => {
-            let newPlayer = data.player;
-            newPlayer.team = data.team;
             players.push(data.player);
         });
 

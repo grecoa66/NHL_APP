@@ -18,6 +18,9 @@ import { HeaderComponent } from './header/header.component';
 import { TeamsComponent } from './teams/teams.component';
 import {AppRoutingModule} from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TeamsFormComponent } from './teams/teams-form/teams-form.component';
+import { TeamsListComponent } from './teams/teams-list/teams-list.component';
+import {TeamsService} from "./teams/services/teams.service";
 
 // All app components and dependencies
 @NgModule({
@@ -29,7 +32,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         HomePageComponent,
         HeaderComponent,
         TeamsComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        TeamsFormComponent,
+        TeamsListComponent
     ],
     imports: [
         BrowserModule,
@@ -39,7 +44,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ],
     providers: [
         AppService,
-        PlayersService
+        PlayersService,
+        TeamsService
     ],
     bootstrap: [AppComponent]
 })
