@@ -1,5 +1,41 @@
 <app-header></app-header>
 
-<div class="container-fluid">
+<div class="container-fluid row">
+    <div class="btn-group">
+        <!-- Use of dropdown component directive -->
+        <div class="dropdown" dropdown>
+            <!-- Use of dropdownToggle component directive -->
+            <button
+                class="btn btn-dark btn-lg dropdown-toggle"
+                id="seasonDropDown"
+                type="button"
+                dropdownToggle
+                >
+                Season
+            </button>
+            <!-- Use of dropDownMenu structural directive-->
+            <div class="dropdown-menu" *dropdownMenu>
+                <a class="dropdown-item" (click)="getTeams('2016-2017')">2016-2017</a>
+                <a class="dropdown-item" (click)="getTeams('2015-2016')">2015-2016</a>
+                <a class="dropdown-item" (click)="getTeams('2014-2015')">2014-2015</a>
+                <a class="dropdown-item" (click)="getTeams('2013-2014')">2013-2014</a>
+                <a class="dropdown-item" (click)="getTeams('2012-2013')">2012-2013</a>
+                <a class="dropdown-item" (click)="getTeams('2011-2012')">2011-2012</a>
+                <a class="dropdown-item" (click)="getTeams('2010-2011')">2010-2011</a>
+                <a class="dropdown-item" (click)="getTeams('2009-2010')">2009-2010</a>
+            </div>
+        </div>
+        <div>
+            <button
+                class="btn btn-danger btn-lg"
+                type="button"
+                (click)="clearTeams()">
+                Clear Teams
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf="teamsLoaded">
     <app-teams-list [teams]="teamList" [year]="year"></app-teams-list>
 </div>

@@ -4,19 +4,21 @@ const axios = require('axios');
 const urlList = require('../../common/url-list');
 
 /**
+ * This route is specifically for teams in the playoffs of the year
+ * passes in.
  * This route will consume a year that the user wants to
  * get a list of teams from. The data that is returned will
  * be an array of all teams from that year, their rank, wins,
  * etc.
  */
-router.get('/:year', (req, res) => {
-    // Add '-regular' to the year for the regular season stats
+router.use('/:year', (req,res) => {
+    // Add '-playoff' to get all teams that had playoff stats
     let fullUrl = urlList.nhl_base_url +
-            `${req.param('year')+ '-regular'}/overall_team_standings.json`;
+        `${req.param('year') + '-playoff'}/overall_team_standings.json`;
     axios.get(fullUrl, {
         auth: {
             'username': process.env.MYSPORTSFEEDSUSER,
-                'password': process.env.MYSPORTSFEEDSKEY
+            'password': process.env.MYSPORTSFEEDSKEY
         }
     }).then(response => {
         res.send(response.data.overallteamstandings.teamstandingsentry);
@@ -26,6 +28,8 @@ router.get('/:year', (req, res) => {
 });
 
 /**
+ * This route is specifically for players in the playoffs of the year
+ * passes in.
  * This route will consume a year and a team name that can either be
  * a dash delimited string of the city and team name (EX: newjersey-devils)
  * or an abbriviation of the team (EX: NJD). The abbriviations are the ones
@@ -36,7 +40,7 @@ router.get('/:year', (req, res) => {
 router.get('/:year/:teamName', (req, res) => {
     // Add '-regular' to the year for the regular season stats
     let fullUrl = urlList.nhl_base_url +
-        `${req.param('year') + '-regular'}/cumulative_player_stats.json?team=${req.param('teamName')}`;
+        `${req.param('year') + '-playoff'}/cumulative_player_stats.json?team=${req.param('teamName')}`;
 
     axios.get(fullUrl, {
         auth: {
@@ -50,6 +54,5 @@ router.get('/:year/:teamName', (req, res) => {
     });
 
 });
-
 
 module.exports = router;

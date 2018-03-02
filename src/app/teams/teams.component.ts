@@ -8,22 +8,28 @@ import {TeamsService} from "./services/teams.service";
 })
 export class TeamsComponent implements OnInit {
 
+    teamsLoaded = false;
+    teamList: any[];
+    yearSelected : string;
+
     constructor(private teamService: TeamsService) {
     }
 
-    teamList: any[];
-    year = '2016-2017-regular';
-
-    ngOnInit() {
-        this.getTeams(this.year);
-    }
+    ngOnInit() {}
 
     getTeams(year: string) {
+        console.log('Its happening');
         this.teamService.getTeamList(year)
             .subscribe(res => {
                 // List of all the team
                 this.teamList = this.teamService.buildTeamList(res);
+                this.teamsLoaded = true;
             });
+    }
+    clearTeams(){
+        this.teamsLoaded = false;
+        this.teamList = [];
+        this.yearSelected = '';
     }
 
 }

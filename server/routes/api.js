@@ -3,6 +3,7 @@ const router = express.Router();
 
 const teams = require('../controllers/team/team-api');
 const players = require('../controllers/player/player-api');
+const playoffs = require('../controllers/playoffs/playoffs-api');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -12,5 +13,7 @@ router.get('/', (req, res) => {
 router.use('/players', players);
 
 router.use('/teams', teams);
+
+router.use('playoffs', playoffs);
 
 module.exports = router;
