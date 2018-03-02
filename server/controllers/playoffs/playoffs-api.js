@@ -3,6 +3,64 @@ const router = express.Router();
 const axios = require('axios');
 const urlList = require('../../common/url-list');
 
+
+/**
+ * This route is specifically players on a team in the playoffs of the year
+ * passes in.
+ * This route will consume a year and a team name that can either be
+ * a dash delimited string of the city and team name (EX: newjersey-devils)
+ * or an abbriviation of the team (EX: NJD). The abbriviations are the ones
+ * commonly used for each team. Check most online nhl resources to find a list.
+ * This route will return a list of players from the year and team the user selects.
+ * It will return information about the players like name, position, goals, etc.
+ */
+router.get('/players/:year/:teamName', (req, res) => {
+    let fullUrl = urlList.nhl_base_url +
+        `${req.param('year') + '-playoff'}/cumulative_player_stats.json?team=${req.param('teamName')}`;
+
+    axios.get(fullUrl, {
+        auth: {
+            'username': process.env.MYSPORTSFEEDSUSER,
+            'password': process.env.MYSPORTSFEEDSKEY
+        }
+    }).then(response => {
+        res.send(response.data.cumulativeplayerstats.playerstatsentry);
+    }).catch(error => {
+        console.log('ERROR', error);
+        res.send(error.res.statusCode);
+    });
+});
+
+
+/**
+ * This route is specifically a team in the playoffs of the year
+ * passes in.
+ * This route will consume a year and a team name that can either be
+ * a dash delimited string of the city and team name (EX: newjersey-devils)
+ * or an abbriviation of the team (EX: NJD). The abbriviations are the ones
+ * commonly used for each team. Check most online nhl resources to find a list.
+ * This route will return a list of players from the year and team the user selects.
+ * It will return information about the players like name, position, goals, etc.
+ */
+router.get('/:year/:teamName', (req, res) => {
+    // Add '-regular' to the year for the regular season stats
+    let fullUrl = urlList.nhl_base_url +
+        `${req.param('year') + '-playoff'}/overall_team_standings.json?team=${req.param('teamName')}`;
+
+    axios.get(fullUrl, {
+        auth: {
+            'username': process.env.MYSPORTSFEEDSUSER,
+            'password': process.env.MYSPORTSFEEDSKEY
+        }
+    }).then(response => {
+        res.send(response.data.overallteamstandings.teamstandingsentry);
+    }).catch(error => {
+        console.log('ERROR', error);
+        res.send(error.res.statusCode);
+    });
+
+});
+
 /**
  * This route is specifically for teams in the playoffs of the year
  * passes in.
@@ -21,38 +79,12 @@ router.use('/:year', (req,res) => {
             'password': process.env.MYSPORTSFEEDSKEY
         }
     }).then(response => {
+        console.log('THIS IS GETTING CALLED');
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
         console.log('ERROR', error);
+        res.send(error.res.statusCode);
     });
-});
-
-/**
- * This route is specifically for players in the playoffs of the year
- * passes in.
- * This route will consume a year and a team name that can either be
- * a dash delimited string of the city and team name (EX: newjersey-devils)
- * or an abbriviation of the team (EX: NJD). The abbriviations are the ones
- * commonly used for each team. Check most online nhl resources to find a list.
- * This route will return a list of players from the year and team the user selects.
- * It will return information about the players like name, position, goals, etc.
- */
-router.get('/:year/:teamName', (req, res) => {
-    // Add '-regular' to the year for the regular season stats
-    let fullUrl = urlList.nhl_base_url +
-        `${req.param('year') + '-playoff'}/cumulative_player_stats.json?team=${req.param('teamName')}`;
-
-    axios.get(fullUrl, {
-        auth: {
-            'username': process.env.MYSPORTSFEEDSUSER,
-            'password': process.env.MYSPORTSFEEDSKEY
-        }
-    }).then(response => {
-        res.send(response.data.cumulativeplayerstats.playerstatsentry);
-    }).catch(error => {
-        console.log('ERROR', error);
-    });
-
 });
 
 module.exports = router;

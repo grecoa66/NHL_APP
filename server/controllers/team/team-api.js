@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const playoffs = require('../playoffs/playoffs-api');
 const urlList = require('../../common/url-list');
 
 /**
@@ -21,9 +22,13 @@ router.get('/:year', (req, res) => {
     }).then(response => {
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
-        console.log('ERROR', error);
+        console.log('ERROR', error.request.res);
+        res.send(error.Error);
     });
 });
+
+
+router.use('/playoffs', playoffs);
 
 /**
  * This route will consume a year and a team name that can either be
@@ -47,6 +52,7 @@ router.get('/:year/:teamName', (req, res) => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
         console.log('ERROR', error);
+        res.send(error.Error);
     });
 
 });

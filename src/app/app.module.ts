@@ -7,7 +7,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {PlayersComponent} from './players/players.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TeamsFormComponent } from './teams/teams-form/teams-form.component';
 import { TeamsListComponent } from './teams/teams-list/teams-list.component';
 import { PlayerCardComponent } from './players/player-card/player-card.component';
 import {PlayerListComponent} from './players/player-list/player-list.component';
@@ -35,7 +34,6 @@ import {AppRoutingModule} from './app-routing.module';
         HeaderComponent,
         TeamsComponent,
         PageNotFoundComponent,
-        TeamsFormComponent,
         TeamsListComponent
     ],
     imports: [

@@ -14,6 +14,6 @@ router.use('/players', players);
 
 router.use('/teams', teams);
 
-router.use('playoffs', playoffs);
+
 
 module.exports = router;
