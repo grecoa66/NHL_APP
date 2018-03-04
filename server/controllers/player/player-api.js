@@ -3,6 +3,8 @@ const router = express.Router();
 const axios = require('axios');
 const urlList = require('../../common/url-list');
 
+// Path to these endpoints : '/api/players/...'
+
 /**
  * This route will get the players for the specified year.
  * This route will return all the players from the specific year
@@ -23,6 +25,11 @@ router.get('/:year', (req, res) => {
         res.send(error.res.statusCode);
     });
 });
+
+/**
+ * This route will get you detailed player data about a specific player,
+ * for a specific year. The names are used as dash delimited firstName-lastName.
+ */
 
 router.get('/:year/:playerName', (req, res) => {
     let fullUrl = urlList.nhl_base_url +

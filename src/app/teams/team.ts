@@ -1,4 +1,5 @@
 export class Team {
+
     private _teamId: number;
     private _name: string;
     private _city: string;
@@ -11,6 +12,7 @@ export class Team {
     private _goalsFor: number;
     private _goalsAgainst: number;
     private _goalDifferential: number;
+    private _gamesPlayed : number;
     private _ppp: number;
 
 
@@ -25,6 +27,7 @@ export class Team {
                 rank: number,
                 goalsFor: number,
                 goalsAgainst: number,
+                gamesPlayed:number,
                 ppp: number
     ) {
         this._teamId = teamId;
@@ -38,6 +41,7 @@ export class Team {
         this._rank = rank;
         this._goalsFor = goalsFor;
         this._goalsAgainst = goalsAgainst;
+        this._gamesPlayed = gamesPlayed;
         this._ppp = ppp;
     }
 
@@ -131,6 +135,14 @@ export class Team {
 
     get goalDifferential(): number {
         return this.goalsFor - this.goalsAgainst;
+    }
+
+    get gamesPlayed(): number {
+        return this._gamesPlayed;
+    }
+
+    set gamesPlayed(value: number) {
+        this._gamesPlayed = value;
     }
 
     get ppp(): number {

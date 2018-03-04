@@ -8,21 +8,38 @@ import {Team} from '../Team'
 export class TeamsService {
 
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient) {}
+
+    getTeamList(year: string, playoffs: boolean) {
+
+        if(playoffs){
+            let strLen = year.length;
+            year = year.substr(strLen - 4, strLen);
+            // Configure the url
+            let url = `api/teams/playoffs/${year}`;
+            // Make the http request
+            return this.http.get(url);
+        }else{
+            // Configure the url
+            let url = `api/teams/${year}`;
+            // Make the http request
+            return this.http.get(url);
+        }
+
     }
 
-    getTeamList(year: string) {
-        // Configure the url
-        let url = `api/teams/${year}`;
-        // Make the http request
-        return this.http.get(url);
-    }
+    getTeam(year: string, team: string, playoffs: boolean) {
 
-    getTeam(year: string, team: string) {
-        // Configure the url
-        let url = `api/teams/${year}/${team}`;
-        // Make the http request
-        return this.http.get(url);
+        if(playoffs){
+            // Configure the url
+            let url = `api/teams/playoffs/${year}/${team}`;
+            return this.http.get(url);
+        }else {
+            // Configure the url
+            let url = `api/teams/${year}/${team}`;
+            // Make the http request
+            return this.http.get(url);
+        }
     }
 
     buildTeamList(data: any) {
@@ -43,6 +60,7 @@ export class TeamsService {
                 team.rank,
                 team.stats.stats.GoalsFor['#text'],
                 team.stats.stats.GoalsAgainst['#text'],
+                team.stats.GamesPlayed['#text'],
                 team.stats.stats.PowerplayPercent['#text']
             );
 

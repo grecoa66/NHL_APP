@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const urlList = require('../../common/url-list');
 
+// Path to these endpoints : 'api/teams/playoffs/...'
 
 /**
  * This route is specifically players on a team in the playoffs of the year
@@ -16,7 +17,7 @@ const urlList = require('../../common/url-list');
  */
 router.get('/players/:year/:teamName', (req, res) => {
     let fullUrl = urlList.nhl_base_url +
-        `${req.param('year') + '-playoff'}/cumulative_player_stats.json?team=${req.param('teamName')}`;
+        `${req.params.year + '-playoff'}/cumulative_player_stats.json?team=${req.params.teamName}`;
 
     axios.get(fullUrl, {
         auth: {
@@ -45,7 +46,7 @@ router.get('/players/:year/:teamName', (req, res) => {
 router.get('/:year/:teamName', (req, res) => {
     // Add '-regular' to the year for the regular season stats
     let fullUrl = urlList.nhl_base_url +
-        `${req.param('year') + '-playoff'}/overall_team_standings.json?team=${req.param('teamName')}`;
+        `${req.params.year + '-playoff'}/overall_team_standings.json?team=${req.params.teamName}`;
 
     axios.get(fullUrl, {
         auth: {
@@ -72,7 +73,7 @@ router.get('/:year/:teamName', (req, res) => {
 router.use('/:year', (req,res) => {
     // Add '-playoff' to get all teams that had playoff stats
     let fullUrl = urlList.nhl_base_url +
-        `${req.param('year') + '-playoff'}/overall_team_standings.json`;
+        `${req.params.year + '-playoff'}/overall_team_standings.json`;
     axios.get(fullUrl, {
         auth: {
             'username': process.env.MYSPORTSFEEDSUSER,

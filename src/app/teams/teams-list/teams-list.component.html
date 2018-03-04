@@ -1,4 +1,6 @@
-<table class="table table-hover">
+<h2 class="align-content-center">Year {{year}}</h2>
+
+<table class="table table-hover" *ngIf="!playoffs">
     <thead>
         <tr>
             <td>League Rank</td>
@@ -17,8 +19,31 @@
             <td>{{team._city}}</td>
             <td>{{team._wins}}</td>
             <td>{{team._losses}}</td>
-            <td>{{team._overtimeLosses}}</td> 
+            <td>{{team._overtimeLosses}}</td>
             <td>{{team._points}}</td>
         </tr>
+    </tbody>
+</table>
+
+<table class="table table-hover" *ngIf="playoffs">
+    <thead>
+    <tr>
+        <td>Playoff Rank</td>
+        <td>Team</td>
+        <td>City</td>
+        <td>Wins</td>
+        <td>Losses</td>
+        <td>Games Played</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let team of teams">
+        <td>{{team._rank}}</td>
+        <td>{{team._name}}</td>
+        <td>{{team._city}}</td>
+        <td>{{team._wins}}</td>
+        <td>{{team._losses}}</td>
+        <td>{{team._gamesPlayed}}</td>
+    </tr>
     </tbody>
 </table>

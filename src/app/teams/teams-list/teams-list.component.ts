@@ -9,6 +9,7 @@ export class TeamsListComponent implements OnInit {
 
     @Input() teams : any[] = [];
     @Input() year : string;
+    @Input() playoffs : boolean;
 
     constructor() {}
 
