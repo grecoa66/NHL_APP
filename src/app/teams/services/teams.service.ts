@@ -31,6 +31,8 @@ export class TeamsService {
     getTeam(year: string, team: string, playoffs: boolean) {
 
         if(playoffs){
+            let strLen = year.length;
+            year = year.substr(strLen - 4, strLen);
             // Configure the url
             let url = `api/teams/playoffs/${year}/${team}`;
             return this.http.get(url);
