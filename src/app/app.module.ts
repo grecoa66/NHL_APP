@@ -13,6 +13,7 @@ import {PlayerListComponent} from './players/player-list/player-list.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { TeamsComponent } from './teams/teams.component';
+import { TeamModalComponent} from './teams/team-modal/team-modal.component';
 
 //Services
 import {AppService} from './app.service';
@@ -34,7 +35,8 @@ import {AppRoutingModule} from './app-routing.module';
         HeaderComponent,
         TeamsComponent,
         PageNotFoundComponent,
-        TeamsListComponent
+        TeamsListComponent,
+        TeamModalComponent
     ],
     imports: [
         BrowserModule,
@@ -48,7 +50,10 @@ import {AppRoutingModule} from './app-routing.module';
         PlayersService,
         TeamsService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents :[
+        TeamModalComponent
+    ]
 })
 export class AppModule {
 

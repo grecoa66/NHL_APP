@@ -11,7 +11,6 @@ export class TeamsComponent implements OnInit {
     teamsLoaded = false;
     teamList: any[];
     yearSelected : string;
-    playoffYear : string;
     playoffsEnabled : boolean = false;
 
     constructor(private teamService: TeamsService) {
