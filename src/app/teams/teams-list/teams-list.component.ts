@@ -22,7 +22,10 @@ export class TeamsListComponent implements OnInit {
 
     showTeamDetail(team: Team, template: TemplateRef<any>){
         console.log('This is the team: ', team);
-        this.modalRef = this.modalService.show(TeamModalComponent);
+        const initialState = {
+            team: team
+        };
+        this.modalRef = this.modalService.show(TeamModalComponent, {initialState});
     }
 
     showPlayoffTeamDetail(team: Team){
