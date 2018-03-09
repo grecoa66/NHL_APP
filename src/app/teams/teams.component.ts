@@ -43,7 +43,8 @@ export class TeamsComponent implements OnInit {
         //clear the teams
         this.teamList = [];
         // get the year for playoffs
-        this.getTeams(this.yearSelected);
+        if(this.yearSelected)
+            this.getTeams(this.yearSelected);
     }
 
     /*

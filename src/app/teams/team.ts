@@ -14,6 +14,7 @@ export class Team {
     private _goalDifferential: number;
     private _gamesPlayed : number;
     private _ppp: number;
+    private _ppk: number;
 
 
     constructor(teamId: number,
@@ -28,7 +29,8 @@ export class Team {
                 goalsFor: number,
                 goalsAgainst: number,
                 gamesPlayed:number,
-                ppp: number
+                ppp: number,
+                ppk: number
     ) {
         this._teamId = teamId;
         this._name = name;
@@ -43,6 +45,7 @@ export class Team {
         this._goalsAgainst = goalsAgainst;
         this._gamesPlayed = gamesPlayed;
         this._ppp = ppp;
+        this._ppk = ppk;
     }
 
     get teamId(): number {
@@ -151,5 +154,13 @@ export class Team {
 
     set ppp(value: number) {
         this._ppp = value;
+    }
+
+    get ppk(): number {
+        return this._ppk;
+    }
+
+    set ppk(value: number) {
+        this._ppk = value;
     }
 }

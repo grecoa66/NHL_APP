@@ -14,6 +14,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { TeamsComponent } from './teams/teams.component';
 import { TeamModalComponent} from './teams/team-modal/team-modal.component';
+import { TeamDetailComponent } from './teams/team-detail/team-detail.component'
 
 //Services
 import {AppService} from './app.service';
@@ -36,7 +37,8 @@ import {AppRoutingModule} from './app-routing.module';
         TeamsComponent,
         PageNotFoundComponent,
         TeamsListComponent,
-        TeamModalComponent
+        TeamModalComponent,
+        TeamDetailComponent
     ],
     imports: [
         BrowserModule,

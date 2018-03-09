@@ -1,0 +1,17 @@
+.teamName {
+    padding-top:5px;
+}
+
+.modal-body {
+    overflow-x: auto;
+}
+
+.negativeDiff {
+    color : red;
+}
+
+.positiveDiff {
+    color: darkgreen;
+}
+
+

@@ -1,14 +1,72 @@
 
-<div class="modal-header">
-    <h4 class="modal-title pull-left">{{team.city}} {{team.name}}</h4>
 
-    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body">
-    <h2></h2>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
-</div>
+        <div class="modal-header teamNameLogo ">
+            <h2 class="modal-title pull-left teamName ">{{team.city}} {{team.name}}</h2>
+            <span style="width:10px"></span>
+            <img class="teamLogoImg" src="../../../assets/{{team.teamId}}.png">
+
+            <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <td>League Rank</td>
+                        <td>Wins</td>
+                        <td>Losses</td>
+                        <td>Overtime <br> Losses</td>
+                        <td>Points</td>
+                        <td>Goals For</td>
+                        <td>Goals Against</td>
+                        <td>Goal Differential</td>
+                        <td>Power Play Percentage</td>
+                        <td>Penalty Kill Percentage</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                        <td>{{team._rank}}</td>
+                        <td>{{team._wins}}</td>
+                        <td>{{team._losses}}</td>
+                        <td>{{team._overtimeLosses}}</td>
+                        <td>{{team._points}}</td>
+                        <td>{{team._goalsFor}}</td>
+                        <td>{{team._goalsAgainst}}</td>
+                        <td>
+                            <span *ngIf="getGoalDiff()">+ </span>
+                            {{team.goalDifferential}}</td>
+                        <td>{{team._ppp}}%</td>
+                        <td>{{team._ppk}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--<table class="table ">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<td>Goals For</td>-->
+                    <!--<td>Goals Against</td>-->
+                    <!--<td>Goal Differential</td>-->
+                    <!--<td>Power Play Percentage</td>-->
+                    <!--<td>Penalty Kill Percentage</td>-->
+
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr >-->
+                    <!--<td>{{team._goalsFor}}</td>-->
+                    <!--<td>{{team._goalsAgainst}}</td>-->
+                    <!--<td>-->
+                        <!--<span *ngIf="getGoalDiff()">+ </span>-->
+                        <!--{{team.goalDifferential}}</td>-->
+                    <!--<td>{{team._ppp}}%</td>-->
+                    <!--<td>{{team._ppk}}%</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
+        </div>
+

@@ -8,13 +8,17 @@ import {Team} from "../team";
     styleUrls: ['./team-modal.component.css']
 })
 export class TeamModalComponent implements OnInit {
-    list = ['Hey', 'Hi', 'Hello'];
+
     team : Team;
+
 
     constructor(public bsModalRef: BsModalRef) {
     }
 
-    ngOnInit() {
+    ngOnInit() {}
+
+    getGoalDiff(){
+        return (this.team.goalDifferential > 0);
     }
 
 }

@@ -44,28 +44,34 @@ export class TeamsService {
         }
     }
 
+    buildTeam(data:any){
+        let team = data;
+        const currTeam = new Team(
+            team.team.ID,
+            team.team.Name,
+            team.team.City,
+            team.team.Abbreviation,
+            team.stats.stats.Wins['#text'],
+            team.stats.stats.Losses['#text'],
+            team.stats.stats.OvertimeLosses['#text'],
+            team.stats.stats.Points['#text'],
+            team.rank,
+            team.stats.stats.GoalsFor['#text'],
+            team.stats.stats.GoalsAgainst['#text'],
+            team.stats.GamesPlayed['#text'],
+            team.stats.stats.PowerplayPercent['#text'],
+            team.stats.stats.PenaltyKillPercent['#text']
+        );
+        return currTeam;
+    }
+
     buildTeamList(data: any) {
         let teams : any[] = [];
         let teamData : any = data;
 
         _.forEach(teamData, (team) => {
             //let teamId = <number> team.team.ID;
-            const currTeam = new Team(
-                team.team.ID,
-                team.team.Name,
-                team.team.City,
-                team.team.Abbreviation,
-                team.stats.stats.Wins['#text'],
-                team.stats.stats.Losses['#text'],
-                team.stats.stats.OvertimeLosses['#text'],
-                team.stats.stats.Points['#text'],
-                team.rank,
-                team.stats.stats.GoalsFor['#text'],
-                team.stats.stats.GoalsAgainst['#text'],
-                team.stats.GamesPlayed['#text'],
-                team.stats.stats.PowerplayPercent['#text']
-            );
-
+            const currTeam = this.buildTeam(team);
             teams.push(currTeam);
         });
         return teams;
