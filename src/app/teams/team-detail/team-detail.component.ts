@@ -38,4 +38,8 @@ export class TeamDetailComponent implements OnInit {
         this.router.navigate([`/teams/${this.year}`]);
     }
 
+    isGoalDiffPositive(){
+        return (this.team.goalDifferential > 0);
+    }
+
 }

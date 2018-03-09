@@ -1,5 +1,54 @@
+<app-header></app-header>
 <!-- Don't render this page before the data is ready -->
 <div *ngIf="dataIsReady">
-    <h2 class="">{{team.city}} {{team.name}}</h2>
-
+    <div class="container-fluid ">
+        <!-- Header with city, team name, and logo-->
+        <div class="row justify-content-center">
+            <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <h1 class="display-4">
+                    {{team.city}} {{team.name}}
+                    <img class="teamLogoImg" src="../../../assets/{{team.teamId}}.png">
+                </h1>
+            </div>
+        </div>
+        <!-- Table with detailed team data -->
+        <div class="row justify-content-center">
+            <div class=" team-table col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td>League Rank</td>
+                        <td>Wins</td>
+                        <td>Losses</td>
+                        <td>Overtime Losses</td>
+                        <td>Points</td>
+                        <td>Goals For</td>
+                        <td>Goals Against</td>
+                        <td>Goal Differential</td>
+                        <td>Power Play Percentage</td>
+                        <td>Penalty Kill Percentage</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{team._rank}}</td>
+                        <td>{{team._wins}}</td>
+                        <td>{{team._losses}}</td>
+                        <td>{{team._overtimeLosses}}</td>
+                        <td>{{team._points}}</td>
+                        <td>{{team._goalsFor}}</td>
+                        <td>{{team._goalsAgainst}}</td>
+                        <td>
+                            <span *ngIf="isGoalDiffPositive()">+ </span>
+                            {{team.goalDifferential}}</td>
+                        <td>{{team._ppp}}%</td>
+                        <td>{{team._ppk}}%</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- Table with all team players-->
+        
+    </div>
 </div>
