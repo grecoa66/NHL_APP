@@ -46,7 +46,7 @@ export class TeamsService {
 
     buildTeam(data:any){
         let team = data;
-        const currTeam = new Team(
+        return new Team(
             team.team.ID,
             team.team.Name,
             team.team.City,
@@ -62,17 +62,14 @@ export class TeamsService {
             team.stats.stats.PowerplayPercent['#text'],
             team.stats.stats.PenaltyKillPercent['#text']
         );
-        return currTeam;
     }
 
     buildTeamList(data: any) {
         let teams : any[] = [];
-        let teamData : any = data;
 
-        _.forEach(teamData, (team) => {
-            //let teamId = <number> team.team.ID;
-            const currTeam = this.buildTeam(team);
-            teams.push(currTeam);
+        //Put all teams into an array
+        _.forEach(data, (team) => {
+            teams.push(this.buildTeam(team));
         });
         return teams;
     }
