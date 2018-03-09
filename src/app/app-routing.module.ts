@@ -14,6 +14,10 @@ const appRoutes: Routes = [
         pathMatch: 'full'
     },
     {
+      path: 'teams/:year',
+        component: TeamsComponent
+    },
+    {
         path: 'team/:year/:playoffs/:teamName',
         component: TeamDetailComponent
     },

@@ -27,7 +27,7 @@ export class TeamsListComponent implements OnInit {
         //     team: team
         // };
         // this.modalRef = this.modalService.show(TeamModalComponent, {initialState});
-        this.router.navigate([`/team/${this.year}/${this.playoffs}/${team.name}`])
+        this.router.navigate([`/team/${this.year}/${this.playoffs}/${team.abbrv}`])
     }
 
     showPlayoffTeamDetail(team: Team){

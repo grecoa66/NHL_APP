@@ -21,13 +21,16 @@ router.get('/:year/:teamName', (req, res) => {
     let teamUrl =  urlList.nhl_base_url +
         `${req.params.year+ '-regular'}/overall_team_standings.json?team=${req.params.teamName}`;
 
+    console.log('Year', req.params.teamName);
+    console.log('FullUrl', playerUrl);
     axios.all([getPlayerTeam(playerUrl), getTeam(teamUrl)])
         .then(axios.spread((players, team) => {
+            //console.log("players before obj", players);
             let fullObj = {
                 team : team.data.overallteamstandings.teamstandingsentry,
                 players : players.data.cumulativeplayerstats.playerstatsentry
             };
-            console.log("Printing the team and players", team.data);
+            //console.log("Printing the team and players", team.data);
             res.send(fullObj);
         }));
 

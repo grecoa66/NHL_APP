@@ -13,6 +13,8 @@ import {Observable} from "rxjs";
 export class TeamDetailComponent implements OnInit {
 
     team: Team;
+    year: string;
+    dataIsReady: boolean = false;
 
     constructor(public router: Router,
                 public route: ActivatedRoute,
@@ -20,24 +22,20 @@ export class TeamDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        let something = 'this';
-        // this.activatedRoute.paramMap
-        //     .switchMap((params: ParamMap) => {
-        //         let playoffsStr = (params.get('playoffs') == 'true');
-        //         this.teamService.getTeam(params.get('year'), params.get('teamId'), playoffsStr)
-        //             .subscribe(res => {
-        //                  this.team = this.teamService.buildTeam(res);
-        //             });
-        //         return Observable.empty();
-        //     });
-
-        let year = this.route.snapshot.paramMap.get('year');
+        // Get params from the route and call service with details
+        // Don't render page until data is acquired
+        this.year = this.route.snapshot.paramMap.get('year');
         let teamName = this.route.snapshot.paramMap.get('teamName');
         let playoffsStr = (this.route.snapshot.paramMap.get('playoffs') == 'true');
-        this.teamService.getTeam(year, teamName, playoffsStr)
-                    .subscribe(res => {
-                         this.team = this.teamService.buildTeam(res);
-                    });
+        this.teamService.getTeam(this.year, teamName, playoffsStr)
+            .subscribe(res => {
+                this.team = this.teamService.buildTeam(res.team[0]);
+                this.dataIsReady = true;
+            });
+    }
+
+    goBack() {
+        this.router.navigate([`/teams/${this.year}`]);
     }
 
 }
