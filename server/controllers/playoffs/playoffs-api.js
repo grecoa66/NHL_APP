@@ -32,6 +32,29 @@ router.get('/players/:year/:teamName', (req, res) => {
     });
 });
 
+/**
+ * This route is specifically for a player on a team in the playoffs of the year
+ * passes in.
+ * This route will consume a year and a player name. If the player was in the playoffs
+ * this will return all their stats from their playoff run.
+ */
+router.get('/player/:year/:playerName', (req, res) => {
+    let fullUrl = urlList.nhl_base_url +
+        `${req.params.year + '-playoff'}/cumulative_player_stats.json?player=${req.params.playerName}`;
+
+    axios.get(fullUrl, {
+        auth: {
+            'username': process.env.MYSPORTSFEEDSUSER,
+            'password': process.env.MYSPORTSFEEDSKEY
+        }
+    }).then(response => {
+        res.send(response.data.cumulativeplayerstats.playerstatsentry);
+    }).catch(error => {
+        console.log('ERROR', error);
+        res.send(error.res.statusCode);
+    });
+});
+
 
 /**
  * This route is specifically a team in the playoffs of the year
@@ -80,7 +103,6 @@ router.use('/:year', (req,res) => {
             'password': process.env.MYSPORTSFEEDSKEY
         }
     }).then(response => {
-        console.log('THIS IS GETTING CALLED');
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
         console.log('ERROR', error);

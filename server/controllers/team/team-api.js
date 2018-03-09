@@ -6,6 +6,8 @@ const urlList = require('../../common/url-list');
 
 // Path to these endpoints : '/api/teams/...'
 
+
+router.use('/playoffs', playoffs);
 /**
  * This route will consume a year and a team name that can either be
  * a dash delimited string of the city and team name (EX: newjersey-devils)
@@ -21,16 +23,13 @@ router.get('/:year/:teamName', (req, res) => {
     let teamUrl =  urlList.nhl_base_url +
         `${req.params.year+ '-regular'}/overall_team_standings.json?team=${req.params.teamName}`;
 
-    console.log('Year', req.params.teamName);
-    console.log('FullUrl', playerUrl);
+
     axios.all([getPlayerTeam(playerUrl), getTeam(teamUrl)])
         .then(axios.spread((players, team) => {
-            //console.log("players before obj", players);
             let fullObj = {
                 team : team.data.overallteamstandings.teamstandingsentry,
                 players : players.data.cumulativeplayerstats.playerstatsentry
             };
-            //console.log("Printing the team and players", team.data);
             res.send(fullObj);
         }));
 
@@ -60,10 +59,6 @@ router.get('/:year', (req, res) => {
 });
 
 
-router.use('/playoffs', playoffs);
-
-
-
 function getPlayerTeam(fullUrl){
 
     return axios.get(fullUrl, {
@@ -72,12 +67,6 @@ function getPlayerTeam(fullUrl){
             'password': process.env.MYSPORTSFEEDSKEY
         }
     });
-    //     .then(response => {
-    //     res.send(response.data.cumulativeplayerstats.playerstatsentry);
-    // }).catch(error => {
-    //     console.log('ERROR', error);
-    //     res.send(error.Error);
-    // });
 }
 
 function getTeam(fullUrl){

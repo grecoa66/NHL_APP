@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const playoffs = require('../playoffs/playoffs-api');
 const urlList = require('../../common/url-list');
 
 // Path to these endpoints : '/api/players/...'
 
+router.use('/playoffs', playoffs);
 /**
  * This route will get the players for the specified year.
  * This route will return all the players from the specific year
