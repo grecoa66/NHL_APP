@@ -15,17 +15,8 @@ export class Player{
     private _teamCity: string;
     private _teamName: string;
     private _teamAbbrv: string;
-    private _goals: number;
-    private _assists: number;
-    private _points: number;
-    private _plusMinus: number;
-    private _shots: number;
-    private _shotPercentage: number;
-    private _pims: number;
-    private _ppp: number;
-    private _shg: number;
-    private _hits: number;
-    private _fop: number;
+    private _teamId: number;
+
 
     constructor(
         playerId: number,
@@ -43,17 +34,7 @@ export class Player{
         teamCity: string,
         teamName: string,
         teamAbbrv: string,
-        goals: number,
-        assists: number,
-        points: number,
-        plusMinus: number,
-        shots: number,
-        shotPercentage: number,
-        pims: number,
-        ppp: number,
-        shg: number,
-        hits: number,
-        fop: number)
+        teamId: number)
     {
         this._playerId = playerId;
         this._lastName = lastName;
@@ -70,17 +51,8 @@ export class Player{
         this._teamCity = teamCity;
         this._teamName = teamName;
         this._teamAbbrv = teamAbbrv;
-        this._goals = goals;
-        this._assists = assists;
-        this._points = points;
-        this._plusMinus = plusMinus;
-        this._shots = shots;
-        this._shotPercentage = shotPercentage;
-        this._pims = pims;
-        this._ppp = ppp;
-        this._shg = shg;
-        this._hits = hits;
-        this._fop = fop;
+        this._teamId = teamId;
+
     }
 
     get playerId(): number {
@@ -203,91 +175,13 @@ export class Player{
         this._teamAbbrv = value;
     }
 
-    get goals(): number {
-        return this._goals;
+    get teamId(): number {
+        return this._teamId;
     }
 
-    set goals(value: number) {
-        this._goals = value;
+    set teamId(value: number) {
+        this._teamId = value;
     }
 
-    get assists(): number {
-        return this._assists;
-    }
 
-    set assists(value: number) {
-        this._assists = value;
-    }
-
-    get points(): number {
-        return this._points;
-    }
-
-    set points(value: number) {
-        this._points = value;
-    }
-
-    get plusMinus(): number {
-        return this._plusMinus;
-    }
-
-    set plusMinus(value: number) {
-        this._plusMinus = value;
-    }
-
-    get shots(): number {
-        return this._shots;
-    }
-
-    set shots(value: number) {
-        this._shots = value;
-    }
-
-    get shotPercentage(): number {
-        return this._shotPercentage;
-    }
-
-    set shotPercentage(value: number) {
-        this._shotPercentage = value;
-    }
-
-    get pims(): number {
-        return this._pims;
-    }
-
-    set pims(value: number) {
-        this._pims = value;
-    }
-
-    get ppp(): number {
-        return this._ppp;
-    }
-
-    set ppp(value: number) {
-        this._ppp = value;
-    }
-
-    get shg(): number {
-        return this._shg;
-    }
-
-    set shg(value: number) {
-        this._shg = value;
-    }
-
-    get hits(): number {
-        return this._hits;
-    }
-
-    set hits(value: number) {
-        this._hits = value;
-    }
-
-    get fop(): number {
-        return this._fop;
-    }
-
-    set fop(value: number) {
-        this._fop = value;
-    }
 }

@@ -29,7 +29,8 @@ export class TeamDetailComponent implements OnInit {
         let playoffsStr = (this.route.snapshot.paramMap.get('playoffs') == 'true');
         this.teamService.getTeam(this.year, teamName, playoffsStr)
             .subscribe(res => {
-                this.team = this.teamService.buildTeam(res.team[0]);
+                let response: any = res;
+                this.team = this.teamService.buildTeam(response.team[0]);
                 this.dataIsReady = true;
             });
     }

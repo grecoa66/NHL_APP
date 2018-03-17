@@ -2,6 +2,7 @@
     <thead class="{{teamStyle}}" >
         <tr>
             <td scope="col">Name</td>
+            <td scope="col">Team</td>
             <td scope="col">#</td>
             <td scope="col">Position</td>
             <td scope="col">Age</td>
@@ -11,14 +12,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let player of players">
-            <td>{{player.FirstName}} {{player.LastName}}</td>
-            <td>{{player.JerseyNumber}}</td>
-            <td>{{player.Position}}</td>
-            <td>{{player.Age}}</td>
-            <td>{{player.Height}}</td>
-            <td>{{player.Weight}}</td>
-            <td>{{player.BirthCity}} {{player.BirthCountry}}</td>
+        <tr *ngFor="let player of players" (click)="selectPlayer(player)">
+            <td>{{player.firstName}} {{player.lastName}}</td>
+            <td><img class="teamLogoImg" src="../../../assets/{{player.teamId}}.png"></td>
+            <td>{{player.jerseyNumber}}</td>
+            <td>{{player.position}}</td>
+            <td>{{player.age}}</td>
+            <td>{{player.height}}</td>
+            <td>{{player.weight}}</td>
+            <td>{{player.birthCity}} {{player.birthCountry}}</td>
         </tr>
     </tbody>
 </table>
