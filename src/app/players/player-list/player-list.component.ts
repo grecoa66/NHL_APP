@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Player} from "../player-objects/player";
 
 @Component({
   selector: 'app-player-list',
@@ -7,12 +8,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PlayerListComponent implements OnInit {
 
-    @Input() players : any[];
+    @Input() players : Player[];
     @Input() teamStyle : string;
 
   constructor() { }
 
   ngOnInit() {
+      console.log('This is now created');
   }
 
 }

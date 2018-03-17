@@ -1,3 +1,9 @@
+img {
+    width: 50%;
+    height: auto;
+}
+
+
 /* Metro */
 thead.NJD td {
     background-color: #d3092a;
