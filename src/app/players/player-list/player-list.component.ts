@@ -8,7 +8,7 @@ import {Player} from "../player-objects/player";
 })
 export class PlayerListComponent implements OnInit {
 
-    @Input() players : Player[];
+    @Input() players : any[];
     @Input() teamStyle : string;
 
   constructor() { }

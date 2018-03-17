@@ -10,12 +10,11 @@ export class PlayersService {
 
     url: string;
 
-    private _playersFetched = false;
-
     players : any[] = [];
     forwards : Skater[] = [];
     defenseman : Skater[] = [];
     goalies : Goalie[] = [];
+    skaters : Skater[] = [];
 
     constructor(private http: HttpClient) {
         this.url = 'api/players/2016-2017-regular';
@@ -73,6 +72,15 @@ export class PlayersService {
         return this.goalies;
     }
 
+    getSkaters(){
+        _.forEach(this.players, (player) => {
+            if(player._position !== 'G') {
+                this.skaters.push(player);
+            }
+        });
+        return this.skaters;
+    }
+
     getPlayers(){
         if(this.players.length > 0) {
             return this.players;
@@ -81,18 +89,12 @@ export class PlayersService {
         }
     }
 
-    get playersFetched(): boolean {
-        return this._playersFetched;
-    }
-
     buildPlayerList(data : any){
 
         // Put all players into js array
         _.forEach(data, (player) => {
             this.players.push(this.buildPlayer(player));
         });
-
-        this._playersFetched = true;
 
         return this.players;
     }

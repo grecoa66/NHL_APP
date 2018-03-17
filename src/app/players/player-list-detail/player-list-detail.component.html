@@ -1,0 +1,48 @@
+<table class="table table-hover" >
+    <thead class="{{teamStyle}}" >
+    <tr>
+        <td scope="col">Name</td>
+        <td scope="col">#</td>
+        <td scope="col">Wins</td>
+        <td scope="col">Losses</td>
+        <td scope="col">Goals Against Average</td>
+        <td scope="col">Save Percentage</td>
+        <td scope="col">Shut Outs</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of goalies">
+        <td>{{player.firstName}} {{player.lastName}}</td>
+        <td>{{player.jerseyNumber}}</td>
+        <td>{{player.wins}}</td>
+        <td>{{player.losses}}</td>
+        <td>{{player.goalsAgainstAverage}}</td>
+        <td>{{player.savePercentage}}</td>
+        <td>{{player.shutouts}}</td>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table table-hover" >
+    <thead class="{{teamStyle}}" >
+    <tr>
+        <td scope="col">Name</td>
+        <td scope="col">#</td>
+        <td scope="col">Position</td>
+        <td scope="col">Goals</td>
+        <td scope="col">Assists</td>
+        <td scope="col">Points</td>
+        <td scope="col"></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of skaters">
+        <td>{{player.firstName}} {{player.lastName}}</td>
+        <td>{{player.jerseyNumber}}</td>
+        <td>{{player.position}}</td>
+        <td>{{player.goals}}</td>
+        <td>{{player.assists}}</td>
+        <td>{{player.points}}</td>
+    </tr>
+    </tbody>
+</table>

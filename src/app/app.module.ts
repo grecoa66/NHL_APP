@@ -24,6 +24,7 @@ import {TeamsService} from './teams/services/teams.service';
 //Modules
 import {AppBootstrapModule} from './app-bootstrap.module';
 import {AppRoutingModule} from './app-routing.module';
+import {PlayerListDetailComponent} from "./players/player-list-detail/player-list-detail.component";
 
 // All app components and dependencies
 @NgModule({
@@ -32,6 +33,7 @@ import {AppRoutingModule} from './app-routing.module';
         PlayersComponent,
         PlayerListComponent,
         PlayerCardComponent,
+        PlayerListDetailComponent,
         HomePageComponent,
         HeaderComponent,
         TeamsComponent,

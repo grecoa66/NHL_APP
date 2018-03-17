@@ -35,19 +35,14 @@ export class PlayersComponent implements OnInit{
      * into an array that is available to the template.
      */
     getAllPlayers(year) {
-        // Don't fetch all the players more than once
-        if(this.playerService.playersFetched){
-            this.players = this.playerService.getPlayers();
-            this.playersLoaded = true;
-        }else {
-            // subscribe to service call
-            this.playerService.getAllPlayers(year, this.playoffsEnabled)
-                .subscribe(res => {
-                    // Pass result to the player builder service
-                    this.players = this.playerService.buildPlayerList(res);
-                    this.playersLoaded = true;
-                });
-        }
+        // subscribe to service call
+        this.playerService.getAllPlayers(year, this.playoffsEnabled)
+            .subscribe(res => {
+                // Pass result to the player builder service
+                this.players = this.playerService.buildPlayerList(res);
+                this.playersLoaded = true;
+            });
+
     }
 
     selectPlayer(player){
