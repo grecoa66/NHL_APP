@@ -17,16 +17,16 @@ export class PlayersService {
     skaters : Skater[] = [];
 
     constructor(private http: HttpClient) {
-        this.url = 'api/players/2016-2017-regular';
+        //this.url = 'api/players/2016-2017-regular';
     }
 
     getAllPlayers(year, playoffs) {
         if(playoffs){
             let url = `api/players/playoffs/${year}-regular`;
-            return this.http.get(this.url);
+            return this.http.get(url);
         }else {
             let url = `api/players/${year}-regular`;
-            return this.http.get(this.url);
+            return this.http.get(url);
         }
     }
 

@@ -48,6 +48,7 @@ export class PlayersComponent implements OnInit, OnDestroy{
      * into an array that is available to the template.
      */
     getAllPlayers(year) {
+        this.clearPlayers();
         // subscribe to service call
         this.playerService.getAllPlayers(year, this.playoffsEnabled)
             .subscribe(res => {
@@ -118,5 +119,14 @@ export class PlayersComponent implements OnInit, OnDestroy{
         }
     }
 
-
+    clearPlayers(){
+        this.playerService.destroyPlayersList();
+        this.players = [];
+        this.selectedPlayer = {};
+        this.playersLoaded = false;
+        this.forwardsEnabled = false;
+        this.defenseEnabled = false;
+        this.goalieEnabled = false;
+        this.playerFilter = PlayerFilter['None'];
+    }
 }
