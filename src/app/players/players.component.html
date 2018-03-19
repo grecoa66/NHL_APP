@@ -1,9 +1,9 @@
 <app-header></app-header>
 
 <div class="container-fluid players-container">
-    <div class="row">
+    <div class="row player-table-head">
         <h2>Players</h2>
-        <div class="spacer"></div>
+        <div class="spacer-hor-title"></div>
 
         <!-- Use of dropdown component directive -->
         <div class="dropdown" dropdown>
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="spacer"></div>
+        <div class="spacer-hor"></div>
 
         <div class="btn-group" role="group">
             <button
@@ -40,28 +40,28 @@
                 (click)="enableForwards()">Forwards</button>
         </div>
 
-        <div class="spacer"></div>
+        <div class="spacer-hor"></div>
 
         <div class="btn-group" role="group">
             <button
                 class="btn btn-lg btn-secondary"
-                [class.btn-success]="defenseEnabled"
+                [class.btn-info]="defenseEnabled"
                 [disabled]="!playersLoaded"
                 (click)="enableDefenseman()">Defenseman</button>
         </div>
 
-        <div class="spacer"></div>
+        <div class="spacer-hor"></div>
 
         <div class="btn-group" role="group">
             <button
                 class="btn btn-lg btn-secondary"
-                [class.btn-success]="goalieEnabled"
+                [class.btn-primary]="goalieEnabled"
                 [disabled]="!playersLoaded"
                 (click)="enableGoalies()">Goalies</button>
         </div>
     </div>
 
-    <div class="spacer"></div>
+    <div class="spacer-hor"></div>
 
-    <app-player-list *ngIf="playersLoaded" [players]="players" [teamStyle]="teamStyle"></app-player-list>
+    <app-player-list *ngIf="playersLoaded" [players]="players" [teamStyle]="teamStyle" [filter]="playerFilter"></app-player-list>
 </div>

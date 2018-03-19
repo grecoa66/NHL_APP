@@ -1,18 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {PlayersService} from "./services/players.service";
-import * as _ from 'lodash';
-import {Player} from "./player-objects/player";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {PlayersService} from './services/players.service';
+// import {PlayerFilter} from './player-objects/player-filter.enum';
+
+enum PlayerFilter {
+    Forwards = 'table-success',
+    Defenseman = 'table-info',
+    Goalies = 'table-primary',
+    None = 'table-dark'
+}
 
 @Component({
     selector: 'app-players',
     templateUrl: './players.component.html',
     styleUrls: ['./players.component.css']
 })
-export class PlayersComponent implements OnInit{
+export class PlayersComponent implements OnInit, OnDestroy{
 
     //List of all players
     players: any[] = [];
-    teamStyle = '';
 
     // Selected player
     selectedPlayer = {};
@@ -22,13 +27,21 @@ export class PlayersComponent implements OnInit{
     forwardsEnabled = false;
     defenseEnabled = false;
     goalieEnabled = false;
+    playerFilter: string = PlayerFilter["None"];
 
+    // Directive enablers
+    selectedYear: number;
     playersLoaded = false;
     playoffsEnabled = false;
 
     constructor(private playerService: PlayersService) { }
 
     ngOnInit(){}
+
+    ngOnDestroy(){
+        // Ensure we don't cause bad data lists
+        this.playerService.destroyPlayersList();
+    }
 
     /**
      * Call the player service and put all the players info
@@ -40,11 +53,13 @@ export class PlayersComponent implements OnInit{
             .subscribe(res => {
                 // Pass result to the player builder service
                 this.players = this.playerService.buildPlayerList(res);
+                this.selectedYear = year;
                 this.playersLoaded = true;
             });
 
     }
 
+    // Set data and show the play popup
     selectPlayer(player){
         this.playerSelected = true;
         this.selectedPlayer = player;
@@ -62,10 +77,12 @@ export class PlayersComponent implements OnInit{
         this.forwardsEnabled = !this.forwardsEnabled;
         if(this.forwardsEnabled){
             this.players = this.playerService.getForwards();
+            this.playerFilter = PlayerFilter["Forwards"];
             this.defenseEnabled = false;
             this.goalieEnabled = false;
         }else{
             this.players = this.playerService.getPlayers();
+            this.playerFilter = PlayerFilter["None"];
         }
     }
 
@@ -76,10 +93,12 @@ export class PlayersComponent implements OnInit{
         this.defenseEnabled = !this.defenseEnabled;
         if(this.defenseEnabled){
             this.players = this.playerService.getDefenseman();
+            this.playerFilter = PlayerFilter["Defenseman"];
             this.forwardsEnabled = false;
             this.goalieEnabled = false;
         }else{
             this.players = this.playerService.getPlayers();
+            this.playerFilter = PlayerFilter["None"];
         }
     }
 
@@ -90,10 +109,12 @@ export class PlayersComponent implements OnInit{
         this.goalieEnabled = !this.goalieEnabled;
         if(this.goalieEnabled){
             this.players = this.playerService.getGoalies();
+            this.playerFilter = PlayerFilter["Goalies"];
             this.forwardsEnabled = false;
             this.defenseEnabled = false;
         }else{
             this.players = this.playerService.getPlayers();
+            this.playerFilter = PlayerFilter["None"];
         }
     }
 
