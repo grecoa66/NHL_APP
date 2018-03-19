@@ -31,7 +31,10 @@ router.get('/:year/:teamName', (req, res) => {
                 players : players.data.cumulativeplayerstats.playerstatsentry
             };
             res.send(fullObj);
-        }));
+        }))
+        .catch(error => {
+            sendError(res, error);
+        });
 
 });
 
@@ -53,8 +56,7 @@ router.get('/:year', (req, res) => {
     }).then(response => {
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
-        console.log('ERROR', error.request.res);
-        res.send(error.Error);
+        sendError(res, error);
     });
 });
 
@@ -76,6 +78,15 @@ function getTeam(fullUrl){
             'password': process.env.MYSPORTSFEEDSKEY
         }
     });
+}
+
+function sendError(res, error){
+    console.log('ERROR', error.response.data);
+    if (error.response) {
+        res.send(error.response.status);
+    }else{
+        res.send('404');
+    }
 }
 
 

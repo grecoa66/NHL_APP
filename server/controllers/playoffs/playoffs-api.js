@@ -27,8 +27,7 @@ router.get('/players/:year/:teamName', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+        sendError(res, error);
     });
 });
 
@@ -50,8 +49,7 @@ router.get('/player/:year/:playerName', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+        sendError(res, error);
     });
 });
 
@@ -73,8 +71,7 @@ router.get('/players/:year', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+        sendError(res, error);
     });
 
 });
@@ -103,8 +100,7 @@ router.get('/:year/:teamName', (req, res) => {
     }).then(response => {
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+        sendError(res, error);
     });
 
 });
@@ -129,9 +125,17 @@ router.use('/:year', (req,res) => {
     }).then(response => {
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+       sendError(res, error);
     });
 });
+
+function sendError(res, error){
+    console.log('ERROR', error.response.data);
+    if (error.response) {
+        res.send(error.response.status);
+    }else{
+        res.send('404');
+    }
+}
 
 module.exports = router;

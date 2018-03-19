@@ -7,13 +7,12 @@ const playoffs = require('../controllers/playoffs/playoffs-api');
 
 /* GET api listing. */
 router.get('/', (req, res) => {
-  res.send('api works' );
+  res.send(`<h2>Welcome to the Grecks Hockey DB API ... </h2>
+            <br><h2> Go use a more usefull route ...</h2>` );
 });
 
 router.use('/players', players);
 
 router.use('/teams', teams);
-
-
 
 module.exports = router;

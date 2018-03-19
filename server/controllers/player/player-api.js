@@ -23,8 +23,7 @@ router.get('/:year', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+        sendError(res, error);
     });
 });
 
@@ -45,9 +44,17 @@ router.get('/:year/:playerName', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        console.log('ERROR', error);
-        res.send(error.res.statusCode);
+        sendError(res, error);
     });
 });
+
+function sendError(res, error){
+    console.log('ERROR', error.response.data);
+    if (error.response) {
+        res.send(error.response.status);
+    }else{
+        res.send('404');
+    }
+}
 
 module.exports = router;
