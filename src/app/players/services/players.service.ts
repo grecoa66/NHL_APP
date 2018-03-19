@@ -162,4 +162,13 @@ export class PlayersService {
 
     }
 
+    // Clear all arrays
+    destroyPlayersList(){
+        this.players = [];
+        this.forwards  = [];
+        this.defenseman  = [];
+        this.goalies  = [];
+        this.skaters  = [];
+    }
+
 }
