@@ -89,19 +89,23 @@ router.get('/players/:year', (req, res) => {
  */
 router.get('/:year/:teamName', (req, res) => {
     // Add '-regular' to the year for the regular season stats
-    let fullUrl = urlList.nhl_base_url +
-        `${req.params.year + '-playoff'}/overall_team_standings.json?team=${req.params.teamName}`;
+    let playerUrl = urlList.nhl_base_url +
+        `${req.params.year + '-playoff'}/cumulative_player_stats.json?team=${req.params.teamName}`;
+    let teamUrl =  urlList.nhl_base_url +
+        `${req.params.year+ '-playoff'}/overall_team_standings.json?team=${req.params.teamName}`;
 
-    axios.get(fullUrl, {
-        auth: {
-            'username': process.env.MYSPORTSFEEDSUSER,
-            'password': process.env.MYSPORTSFEEDSKEY
-        }
-    }).then(response => {
-        res.send(response.data.overallteamstandings.teamstandingsentry);
-    }).catch(error => {
-        sendError(res, error);
-    });
+
+    axios.all([getPlayerTeam(playerUrl), getTeam(teamUrl)])
+        .then(axios.spread((players, team) => {
+            let fullObj = {
+                team : team.data.overallteamstandings.teamstandingsentry,
+                players : players.data.cumulativeplayerstats.playerstatsentry
+            };
+            res.send(fullObj);
+        }))
+        .catch(error => {
+            sendError(res, error);
+        });
 
 });
 
@@ -128,6 +132,25 @@ router.use('/:year', (req,res) => {
        sendError(res, error);
     });
 });
+
+function getPlayerTeam(fullUrl){
+
+    return axios.get(fullUrl, {
+        auth: {
+            'username': process.env.MYSPORTSFEEDSUSER,
+            'password': process.env.MYSPORTSFEEDSKEY
+        }
+    });
+}
+
+function getTeam(fullUrl){
+    return axios.get(fullUrl, {
+        auth: {
+            'username': process.env.MYSPORTSFEEDSUSER,
+            'password': process.env.MYSPORTSFEEDSKEY
+        }
+    });
+}
 
 function sendError(res, error){
     console.log('ERROR', error.response.data);

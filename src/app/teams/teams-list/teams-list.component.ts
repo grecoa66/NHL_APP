@@ -21,12 +21,8 @@ export class TeamsListComponent implements OnInit {
     ngOnInit() {
     }
 
+    // Navigate to the teams page
     showTeamDetail(team: Team, template: TemplateRef<any>){
-        // console.log('This is the team: ', team);
-        // const initialState = {
-        //     team: team
-        // };
-        // this.modalRef = this.modalService.show(TeamModalComponent, {initialState});
         this.router.navigate([`/team/${this.year}/${this.playoffs}/${team.abbrv}`])
     }
 

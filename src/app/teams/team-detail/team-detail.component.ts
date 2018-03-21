@@ -16,6 +16,7 @@ export class TeamDetailComponent implements OnInit {
     team: Team;
     players: any[];
     year: string;
+    playoffs: boolean;
     dataIsReady: boolean = false;
 
     constructor(public router: Router,
@@ -28,9 +29,9 @@ export class TeamDetailComponent implements OnInit {
         // Get params from the route and call service with details
         // Don't render page until data is acquired
         this.year = this.route.snapshot.paramMap.get('year');
+        this.playoffs = (this.route.snapshot.paramMap.get('playoffs') == 'true');
         let teamName = this.route.snapshot.paramMap.get('teamName');
-        let playoffsStr = (this.route.snapshot.paramMap.get('playoffs') == 'true');
-        this.teamService.getTeam(this.year, teamName, playoffsStr)
+        this.teamService.getTeam(this.year, teamName, this.playoffs)
             .subscribe(res => {
                 let response: any = res;
                 this.team = this.teamService.buildTeam(response.team[0]);
