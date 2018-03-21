@@ -5,10 +5,14 @@
         <!-- Header with city, team name, and logo-->
         <div class="row justify-content-center">
             <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                <h1 class="display-4">
-                    {{team.city}} {{team.name}}
+                <h2 >
+                    {{year}} {{team.city}} {{team.name}}
                     <img class="teamLogoImg" src="../../../assets/{{team.teamId}}.png">
-                </h1>
+                    <span *ngIf="playoffs"> Playoffs</span>
+                </h2>
+                <!--<h2 >-->
+                    <!--Playoffs-->
+                <!--</h2>-->
             </div>
         </div>
         <!-- Table with detailed team data -->
