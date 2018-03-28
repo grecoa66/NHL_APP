@@ -58,7 +58,8 @@ import {LoadingScreenComponent} from "./loading-screen/loading-screen.component"
     ],
     bootstrap: [AppComponent],
     entryComponents :[
-        TeamModalComponent
+        TeamModalComponent,
+        PlayerCardComponent
     ]
 })
 export class AppModule {
