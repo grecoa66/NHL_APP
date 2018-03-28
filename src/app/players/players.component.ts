@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PlayersService} from './services/players.service';
-// import {PlayerFilter} from './player-objects/player-filter.enum';
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {PlayerCardComponent} from "./player-card/player-card.component";
+
 
 enum PlayerFilter {
     Forwards = 'table-success',
@@ -23,6 +25,9 @@ export class PlayersComponent implements  OnDestroy{
     selectedPlayer = {};
     playerSelected = false;
 
+    //player card ref
+    playerCardRef: BsModalRef;
+
     // Player type toggles
     forwardsEnabled = false;
     defenseEnabled = false;
@@ -35,7 +40,7 @@ export class PlayersComponent implements  OnDestroy{
     playoffsEnabled = false;
     loading = false;
 
-    constructor(private playerService: PlayersService) { }
+    constructor(private playerService: PlayersService ) { }
 
 
     ngOnDestroy(){
@@ -72,7 +77,7 @@ export class PlayersComponent implements  OnDestroy{
     }
 
     getPlayerInfo(player){
-        console.log('This is the player I chose: ', player);
+        console.log(player);
     }
 
     /**

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {BsModalRef} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-player-card',
@@ -7,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PlayerCardComponent implements OnInit {
 
-    @Input() player;
+    player: any;
 
-  constructor() { }
+  constructor(public playerModal: BsModalRef) { }
 
   ngOnInit() {
+      console.log(this.player);
   }
 
 }
