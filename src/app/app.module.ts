@@ -25,6 +25,7 @@ import {TeamsService} from './teams/services/teams.service';
 import {AppBootstrapModule} from './app-bootstrap.module';
 import {AppRoutingModule} from './app-routing.module';
 import {PlayerListDetailComponent} from "./players/player-list-detail/player-list-detail.component";
+import {LoadingScreenComponent} from "./loading-screen/loading-screen.component";
 
 // All app components and dependencies
 @NgModule({
@@ -40,7 +41,8 @@ import {PlayerListDetailComponent} from "./players/player-list-detail/player-lis
         PageNotFoundComponent,
         TeamsListComponent,
         TeamModalComponent,
-        TeamDetailComponent
+        TeamDetailComponent,
+        LoadingScreenComponent
     ],
     imports: [
         BrowserModule,

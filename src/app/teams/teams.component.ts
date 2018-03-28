@@ -6,17 +6,16 @@ import {TeamsService} from "./services/teams.service";
     templateUrl: './teams.component.html',
     styleUrls: ['./teams.component.css']
 })
-export class TeamsComponent implements OnInit {
+export class TeamsComponent{
 
     teamsLoaded = false;
     teamList: any[];
     yearSelected : string;
     playoffsEnabled : boolean = false;
+    loading : boolean = false;
 
     constructor(private teamService: TeamsService) {
     }
-
-    ngOnInit() {}
 
     /**
      * Call the get teams service for the year supplied
@@ -24,12 +23,15 @@ export class TeamsComponent implements OnInit {
      */
     getTeams(year: string) {
         this.yearSelected = year;
-
+        //turn loading spinner on
+        this.loading = true;
         this.teamService.getTeamList(year, this.playoffsEnabled)
             .subscribe(res => {
                 // List of all the team
                 this.teamList = this.teamService.buildTeamList(res);
                 this.teamsLoaded = true;
+                //turn loading spinner off
+                this.loading = false;
             });
     }
 

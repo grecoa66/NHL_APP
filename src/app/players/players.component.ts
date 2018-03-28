@@ -14,7 +14,7 @@ enum PlayerFilter {
     templateUrl: './players.component.html',
     styleUrls: ['./players.component.css']
 })
-export class PlayersComponent implements OnInit, OnDestroy{
+export class PlayersComponent implements  OnDestroy{
 
     //List of all players
     players: any[] = [];
@@ -33,10 +33,10 @@ export class PlayersComponent implements OnInit, OnDestroy{
     selectedYear: number;
     playersLoaded = false;
     playoffsEnabled = false;
+    loading = false;
 
     constructor(private playerService: PlayersService) { }
 
-    ngOnInit(){}
 
     ngOnDestroy(){
         // Ensure we don't cause bad data lists
@@ -49,6 +49,8 @@ export class PlayersComponent implements OnInit, OnDestroy{
      */
     getAllPlayers(year) {
         this.clearPlayers();
+        //turn loading spinner on
+        this.loading = true;
         // subscribe to service call
         this.playerService.getAllPlayers(year, this.playoffsEnabled)
             .subscribe(res => {
@@ -56,6 +58,8 @@ export class PlayersComponent implements OnInit, OnDestroy{
                 this.players = this.playerService.buildPlayerList(res);
                 this.selectedYear = year;
                 this.playersLoaded = true;
+                //turn loading spinner off
+                this.loading = false;
             });
 
     }
