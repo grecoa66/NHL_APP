@@ -31,9 +31,6 @@ export class PlayerListComponent implements OnInit {
             },
             'class': 'modal-lg card-modal'
         };
-        const initialState = {
-            'player': selectedPlayer
-        };
         this.playerCardRef = this.modalService.show(PlayerCardComponent, propsObj);
     }
 
