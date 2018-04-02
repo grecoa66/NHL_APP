@@ -1,15 +1,54 @@
-<!--<div class="modal-dialog modal-lg" style="background-color: #8a2332">-->
-    <!--<div class="modal-content">-->
-        <!--<div class="modal-header">-->
-            <!--<h4 class="modal-title pull-left">Large modal</h4>-->
-            <!--<button type="button" class="close pull-right" (click)="playerModal.hide()" aria-label="Close">-->
-                <!--<span aria-hidden="true">&times;</span>-->
-            <!--</button>-->
-        <!--</div>-->
-        <!--<div class="modal-body">-->
-            <!--...-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+<div class="modal-header">
+    <h2 class="modal-title">
+        {{player._firstName}} {{player._lastName}} #{{player._jerseyNumber}}
+        <img class="teamLogoImg" src="../../../assets/{{player.teamId}}.png">
+    </h2>
+</div>
+<div class="modal-body" *ngIf="player._position !== 'G'">
+    <div class="row">
+        <h6 class="col-2">Height</h6>
+        <h6 class="col-2">Weight</h6>
+        <h6 class="col-2">Position</h6>
+        <h6 class="col-4">Birth Date (Y-M-D)</h6>
+    </div>
+    <div class="row player-card-content">
+        <p class="col-2">{{player._height}}</p>
+        <p class="col-2">{{player._weight}}</p>
+        <p class="col-2">{{player._position}}</p>
+        <p class="col-4">{{player._birthday}}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <h6 class="col-2">Goals</h6>
+        <h6 class="col-2">Assists</h6>
+        <h6 class="col-2">Points</h6>
+        <h6 class="col-2">+/-</h6>
+        <h6 class="col-2">Shots</h6>
+        <h6 class="col-2">Shot Percentage</h6>
+    </div>
+    <div class="row player-card-content">
+        <p class="col-2">{{player._goals}}</p>
+        <p class="col-2">{{player._assists}}</p>
+        <p class="col-2">{{player._points}}</p>
+        <p class="col-2">{{player._plusMinus}}</p>
+        <p class="col-2">{{player._shots}}</p>
+        <p class="col-2">{{player._shotPercentage}}%</p>
+    </div>
+    <hr>
+    <div class="row">
+        <h6 class="col-3">Power Play Points</h6>
+        <h6 class="col-2">Hits</h6>
+        <h6 class="col-3">Penalty Minutes</h6>
+        <h6 class="col-3">Faceoff Percent</h6>
+    </div>
+    <div class="row">
+        <p class="col-3">{{player._ppp}}</p>
+        <p class="col-2">{{player._hits}}</p>
+        <p class="col-3">{{player._pims}}</p>
+        <p class="col-3">{{player._fop}}</p>
+    </div>
 
-<h2>HELLLLLLLLOOOOO</h2>
+</div>
+<div class="modal-body" *ngIf="player._position === 'G'">
+    <h2>Goalies</h2>
+</div>
