@@ -58,8 +58,7 @@ export class PlayersComponent implements  OnDestroy{
         this.loading = true;
         // subscribe to service call
         this.playerService.getAllPlayers(year, this.playoffsEnabled)
-            .subscribe(
-                res => {
+            .subscribe( res => {
                 // Pass result to the player builder service
                 this.players = this.playerService.buildPlayerList(res);
                 this.selectedYear = year;

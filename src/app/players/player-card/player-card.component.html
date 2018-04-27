@@ -3,6 +3,7 @@
         {{player._firstName}} {{player._lastName}} #{{player._jerseyNumber}}
         <img class="teamLogoImg" src="../../../assets/{{player.teamId}}.png">
     </h2>
+    <h2 class="pull-right modal-title" (click)="closeModal()">X</h2>
 </div>
 <div class="modal-body" *ngIf="player._position !== 'G'">
     <div class="row">
@@ -24,7 +25,7 @@
         <h6 class="col-2">Points</h6>
         <h6 class="col-2">+/-</h6>
         <h6 class="col-2">Shots</h6>
-        <h6 class="col-2">Shot Percentage</h6>
+        <h6 class="col-2">Games Played</h6>
     </div>
     <div class="row player-card-content">
         <p class="col-2">{{player._goals}}</p>
@@ -32,23 +33,64 @@
         <p class="col-2">{{player._points}}</p>
         <p class="col-2">{{player._plusMinus}}</p>
         <p class="col-2">{{player._shots}}</p>
-        <p class="col-2">{{player._shotPercentage}}%</p>
+        <p class="col-2">{{player._gamesPlayed}}</p>
     </div>
     <hr>
     <div class="row">
         <h6 class="col-3">Power Play Points</h6>
         <h6 class="col-2">Hits</h6>
         <h6 class="col-3">Penalty Minutes</h6>
-        <h6 class="col-3">Faceoff Percent</h6>
+        <h6 class="col-2">Shot Percentage</h6>
+        <h6 class="col-2">Faceoff Percent</h6>
     </div>
     <div class="row">
         <p class="col-3">{{player._ppp}}</p>
         <p class="col-2">{{player._hits}}</p>
         <p class="col-3">{{player._pims}}</p>
-        <p class="col-3">{{player._fop}}</p>
+        <p class="col-2">{{player._shotPercentage}}%</p>
+        <p class="col-2">{{player._fop}}</p>
     </div>
 
 </div>
 <div class="modal-body" *ngIf="player._position === 'G'">
-    <h2>Goalies</h2>
+    <div class="row">
+        <h6 class="col-2">Height</h6>
+        <h6 class="col-2">Weight</h6>
+        <h6 class="col-2">Position</h6>
+        <h6 class="col-4">Birth Date (Y-M-D)</h6>
+    </div>
+    <div class="row player-card-content">
+        <p class="col-2">{{player._height}}</p>
+        <p class="col-2">{{player._weight}}</p>
+        <p class="col-2">{{player._position}}</p>
+        <p class="col-4">{{player._birthday}}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <h6 class="col-2">Wins</h6>
+        <h6 class="col-2">Losses</h6>
+        <h6 class="col-2">Shut Outs</h6>
+        <h6 class="col-2">Starts</h6>
+    </div>
+    <div class="row">
+        <p class="col-2">{{player._wins}}</p>
+        <p class="col-2">{{player._losses}}</p>
+        <p class="col-2">{{player._shutouts}}</p>
+        <p class="col-4">{{player._gamesPlayed}}</p>
+    </div>
+    <hr>
+    <div class="row">
+        <h6 class="col-2">Goals Against</h6>
+        <h6 class="col-2">GAA</h6>
+        <h6 class="col-2">Saves</h6>
+        <h6 class="col-2">Save Percentage</h6>
+
+    </div>
+    <div class="row">
+        <p class="col-2">{{player._goalsAgainst}}</p>
+        <p class="col-2">{{player._goalsAgainstAverage}}</p>
+        <p class="col-2">{{player._saves}}</p>
+        <p class="col-2">{{player._savePercentage}}%</p>
+
+    </div>
 </div>

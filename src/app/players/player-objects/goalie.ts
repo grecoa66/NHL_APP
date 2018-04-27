@@ -28,6 +28,7 @@ export class Goalie extends Player {
         teamName: string,
         teamAbbrv: string,
         teamId: number,
+        gamesPlayed: number,
         wins: number,
         losses: number,
         overtimeLosses: number,
@@ -53,7 +54,8 @@ export class Goalie extends Player {
             teamCity,
             teamName,
             teamAbbrv,
-            teamId
+            teamId,
+            gamesPlayed
         );
 
         this._wins = wins;

@@ -31,6 +31,7 @@ export class Skater extends Player{
         teamName: string,
         teamAbbrv: string,
         teamId: number,
+        gamesPlayed: number,
         goals: number,
         assists: number,
         points: number,
@@ -58,7 +59,8 @@ export class Skater extends Player{
             teamCity,
             teamName,
             teamAbbrv,
-            teamId);
+            teamId,
+            gamesPlayed);
 
         this._goals = goals;
         this._assists = assists;

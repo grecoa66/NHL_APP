@@ -16,4 +16,8 @@ export class PlayerCardComponent implements OnInit {
       console.log(this.player);
   }
 
+  closeModal(){
+      this.playerModal.hide();
+  }
+
 }

@@ -10,16 +10,22 @@ export class PlayersService {
 
     url: string;
 
-    players : any[] = [];
-    forwards : Skater[] = [];
-    defenseman : Skater[] = [];
-    goalies : Goalie[] = [];
-    skaters : Skater[] = [];
+    private players : any[] = [];
+    private forwards : Skater[] = [];
+    private defenseman : Skater[] = [];
+    private goalies : Goalie[] = [];
+    private skaters : Skater[] = [];
 
     constructor(private http: HttpClient) {
         //this.url = 'api/players/2016-2017-regular';
     }
 
+    /**
+     * Call the api and return a list of players that are noit yet formatted
+     * @param year
+     * @param playoffs
+     * @returns {Observable<Object>}
+     */
     getAllPlayers(year, playoffs) {
         if(playoffs){
             let url = `api/players/playoffs/${year}-regular`;
@@ -119,6 +125,7 @@ export class PlayersService {
                 player.team.Name,
                 player.team.Abbreviation,
                 player.team.ID,
+                player.stats.GamesPlayed['#text'],
                 player.stats.stats.Goals['#text'],
                 player.stats.stats.Assists['#text'],
                 player.stats.stats.Points['#text'],
@@ -149,6 +156,7 @@ export class PlayersService {
                 player.team.Name,
                 player.team.Abbreviation,
                 player.team.ID,
+                player.stats.GamesPlayed['#text'],
                 player.stats.stats.Wins['#text'],
                 player.stats.stats.Losses['#text'],
                 player.stats.stats.OvertimeLosses['#text'],

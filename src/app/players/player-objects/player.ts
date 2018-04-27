@@ -16,6 +16,7 @@ export class Player{
     private _teamName: string;
     private _teamAbbrv: string;
     private _teamId: number;
+    private _gamesPlayed: number;
 
 
     constructor(
@@ -34,7 +35,8 @@ export class Player{
         teamCity: string,
         teamName: string,
         teamAbbrv: string,
-        teamId: number)
+        teamId: number,
+        gamesPlayed: number)
     {
         this._playerId = playerId;
         this._lastName = lastName;
@@ -52,7 +54,7 @@ export class Player{
         this._teamName = teamName;
         this._teamAbbrv = teamAbbrv;
         this._teamId = teamId;
-
+        this._gamesPlayed = gamesPlayed;
     }
 
     get playerId(): number {
@@ -181,6 +183,15 @@ export class Player{
 
     set teamId(value: number) {
         this._teamId = value;
+    }
+
+
+    get gamesPlayed(): number {
+        return this._gamesPlayed;
+    }
+
+    set gamesPlayed(value: number) {
+        this._gamesPlayed = value;
     }
 
 
