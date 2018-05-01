@@ -1,18 +1,18 @@
 <table class="table table-hover" >
-    <thead class="{{teamStyle}}" >
+    <thead class="" >
         <tr [class]="filter">
-            <td scope="col-2">Name</td>
-            <td scope="col-1">Team</td>
-            <td scope="col-1">#</td>
-            <td scope="col-1">Position</td>
-            <td scope="col-1">Age</td>
-            <td scope="col-1">Ht</td>
-            <td scope="col-1">Wt</td>
-            <td scope="col-2">Hometown</td>
+            <td scope="col-2" (click)="sortTable('lastName')">Name</td>
+            <td scope="col-1" (click)="sortTable('teamId')">Team</td>
+            <td scope="col-1" (click)="sortTable('jerseyNumber')">#</td>
+            <td scope="col-1" (click)="sortTable('position')">Position</td>
+            <td scope="col-1" (click)="sortTable('age')">Age</td>
+            <td scope="col-1" (click)="sortTable('height')">Ht</td>
+            <td scope="col-1" (click)="sortTable('weight')">Wt</td>
+            <td scope="col-2" (click)="sortTable('birthCity')">Hometown</td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let player of players" (click)="selectPlayer(player)">
+        <tr *ngFor="let player of players | orderBy : {property : colData.col, direction: colData.direction }" (click)="selectPlayer(player)">
             <td>{{player.firstName}} {{player.lastName}}</td>
             <td><img class="teamLogoImg" src="../../../assets/{{player.teamId}}.png"></td>
             <td>{{player.jerseyNumber}}</td>
