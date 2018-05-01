@@ -3,13 +3,15 @@ import {Player} from '../player-objects/player';
 import {PlayersService} from '../services/players.service';
 import {Skater} from '../player-objects/skater';
 import {Goalie} from '../player-objects/goalie';
+import {SortableListComponent} from "../../utils/sortable-list";
+import {ColumnOptions} from "../../utils/column-sort";
 
 @Component({
     selector: 'app-player-list-detail',
     templateUrl: './player-list-detail.component.html',
     styleUrls: ['./player-list-detail.component.css']
 })
-export class PlayerListDetailComponent implements OnInit, OnDestroy {
+export class PlayerListDetailComponent extends SortableListComponent implements OnInit, OnDestroy {
     @Input() players: any[];
 
     skaters: Skater[];
@@ -19,6 +21,7 @@ export class PlayerListDetailComponent implements OnInit, OnDestroy {
     skatersCollapsed: boolean = true;
 
     constructor(private playerService: PlayersService) {
+        super(new ColumnOptions(false, 'lastName', '', 1));
     }
 
     ngOnInit() {

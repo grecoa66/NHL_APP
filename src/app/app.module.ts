@@ -26,6 +26,7 @@ import {AppBootstrapModule} from './app-bootstrap.module';
 import {AppRoutingModule} from './app-routing.module';
 import {PlayerListDetailComponent} from "./players/player-list-detail/player-list-detail.component";
 import {LoadingScreenComponent} from "./loading-screen/loading-screen.component";
+import {TeamSortPipe} from "./utils/column-sort.pipe";
 
 // All app components and dependencies
 @NgModule({
@@ -42,7 +43,8 @@ import {LoadingScreenComponent} from "./loading-screen/loading-screen.component"
         TeamsListComponent,
         TeamModalComponent,
         TeamDetailComponent,
-        LoadingScreenComponent
+        LoadingScreenComponent,
+        TeamSortPipe
     ],
     imports: [
         BrowserModule,

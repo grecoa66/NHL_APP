@@ -10,7 +10,7 @@ export class TeamsComponent{
 
     teamsLoaded = false;
     teamList: any[];
-    yearSelected : string;
+    selectedYear : string = '';
     playoffsEnabled : boolean = false;
     loading : boolean = false;
 
@@ -22,7 +22,7 @@ export class TeamsComponent{
      * @param year
      */
     getTeams(year: string) {
-        this.yearSelected = year;
+        this.selectedYear = year;
         //turn loading spinner on
         this.loading = true;
         this.teamService.getTeamList(year, this.playoffsEnabled)
@@ -45,8 +45,8 @@ export class TeamsComponent{
         //clear the teams
         this.teamList = [];
         // get the year for playoffs
-        if(this.yearSelected)
-            this.getTeams(this.yearSelected);
+        if(this.selectedYear)
+            this.getTeams(this.selectedYear);
     }
 
     /*
@@ -55,7 +55,7 @@ export class TeamsComponent{
     clearTeams(){
         this.teamsLoaded = false;
         this.teamList = [];
-        this.yearSelected = '';
+        this.selectedYear = '';
     }
 
 }

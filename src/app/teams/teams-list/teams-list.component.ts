@@ -3,20 +3,25 @@ import {Team} from '../Team';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {Router} from '@angular/router';
 import {TeamModalComponent} from "../team-modal/team-modal.component";
+import {ColumnOptions} from "../../utils/column-sort";
+import {SortableListComponent} from "../../utils/sortable-list";
 
 @Component({
     selector: 'app-teams-list',
     templateUrl: './teams-list.component.html',
     styleUrls: ['./teams-list.component.css']
 })
-export class TeamsListComponent implements OnInit {
-
+export class TeamsListComponent  extends SortableListComponent implements OnInit{
+    //Input Data
     @Input() teams : any[] = [];
     @Input() year : string;
     @Input() playoffs : boolean;
 
-    modalRef : BsModalRef;
-    constructor(private modalService : BsModalService, public router: Router) {}
+    private modalRef : BsModalRef;
+
+    constructor(private modalService : BsModalService, public router: Router) {
+        super(new ColumnOptions(false, 'rank', '', 1));
+    }
 
     ngOnInit() {
     }
@@ -29,4 +34,5 @@ export class TeamsListComponent implements OnInit {
     showPlayoffTeamDetail(team: Team){
         console.log('This is the team: ', team);
     }
+
 }
