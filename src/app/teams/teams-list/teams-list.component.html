@@ -1,19 +1,18 @@
-<h2 class="align-content-center">Year {{year}}</h2>
 
 <table class="table table-hover" *ngIf="!playoffs">
     <thead>
         <tr>
-            <td>League Rank</td>
-            <td>Team</td>
-            <td>City</td>
-            <td>Wins</td>
-            <td>Losses</td>
-            <td>Overtime Losses</td>
-            <td>Points</td>
+            <td (click)="sortTable('_rank')" >League Rank </td>
+            <td (click)="sortTable('_name')" >Team</td>
+            <td (click)="sortTable('_city')" >City</td>
+            <td (click)="sortTable('_wins')" >Wins</td>
+            <td (click)="sortTable('_losses')" >Losses</td>
+            <td (click)="sortTable('_overtimeLosses')" >Overtime Losses</td>
+            <td (click)="sortTable('_points')" >Points</td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let team of teams" (click)="showTeamDetail(team)">
+        <tr *ngFor="let team of teams | orderBy : {property : column, direction: direction }" (click)="showTeamDetail(team)">
             <td>{{team._rank}}</td>
             <td>{{team._name}}</td>
             <td>{{team._city}}</td>
@@ -28,12 +27,12 @@
 <table class="table table-hover" *ngIf="playoffs">
     <thead>
     <tr>
-        <td>Playoff Rank</td>
-        <td>Team</td>
-        <td>City</td>
-        <td>Wins</td>
-        <td>Losses</td>
-        <td>Games Played</td>
+        <td (click)="sortTable('_rank')" >Playoff Rank</td>
+        <td (click)="sortTable('_name')" >Team</td>
+        <td (click)="sortTable('_city')" >City</td>
+        <td (click)="sortTable('_wins')" >Wins</td>
+        <td (click)="sortTable('_losses')" >Losses</td>
+        <td (click)="sortTable('_gamesPlayed')" >Games Played</td>
     </tr>
     </thead>
     <tbody>

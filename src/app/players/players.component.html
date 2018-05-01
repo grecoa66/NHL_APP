@@ -16,7 +16,8 @@
                 type="button"
                 dropdownToggle
             >
-                Season
+                <span *ngIf="selectedYear === ''">Season</span>
+                <span *ngIf="selectedYear !== ''">{{selectedYear}}</span>
             </button>
             <!-- Use of dropDownMenu structural directive-->
             <div >

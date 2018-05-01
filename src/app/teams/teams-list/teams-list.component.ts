@@ -15,6 +15,11 @@ export class TeamsListComponent implements OnInit {
     @Input() year : string;
     @Input() playoffs : boolean;
 
+    isDesc: boolean = false;
+    column: string = '';
+    lastColumn : string = '';
+    direction: number = 1;
+
     modalRef : BsModalRef;
     constructor(private modalService : BsModalService, public router: Router) {}
 
@@ -28,5 +33,12 @@ export class TeamsListComponent implements OnInit {
 
     showPlayoffTeamDetail(team: Team){
         console.log('This is the team: ', team);
+    }
+
+    sortTable(column){
+        this.lastColumn = this.column;
+        this.column = column;
+        this.isDesc = (this.lastColumn !== this.column) ? true : !this.isDesc;
+        this.direction = this.isDesc ? 1: -1;
     }
 }

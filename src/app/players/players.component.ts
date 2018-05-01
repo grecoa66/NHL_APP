@@ -35,7 +35,7 @@ export class PlayersComponent implements  OnDestroy{
     playerFilter: string = PlayerFilter["None"];
 
     // Directive enablers
-    selectedYear: number;
+    selectedYear: string = '';
     playersLoaded = false;
     playoffsEnabled = false;
     loading = false;
@@ -135,6 +135,7 @@ export class PlayersComponent implements  OnDestroy{
         this.playerService.destroyPlayersList();
         this.players = [];
         this.selectedPlayer = {};
+        this.selectedYear = '';
         this.playersLoaded = false;
         this.forwardsEnabled = false;
         this.defenseEnabled = false;
