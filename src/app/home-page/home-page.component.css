@@ -8,4 +8,6 @@
     border: solid 1px black;
     padding:4px;
     margin:5px;
+    box-shadow: 3px 5px #8e9090;
+    height: 250px;
 }
