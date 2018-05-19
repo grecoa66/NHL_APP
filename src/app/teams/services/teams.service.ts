@@ -10,7 +10,7 @@ export class TeamsService {
 
     constructor(private http: HttpClient) {}
 
-    getTeamList(year: string, playoffs: boolean) {
+    getTeamList = (year: string, playoffs: boolean) =>{
 
         if(playoffs){
             let strLen = year.length;
@@ -26,9 +26,9 @@ export class TeamsService {
             return this.http.get(url);
         }
 
-    }
+    };
 
-    getTeam(year: string, team: string, playoffs: boolean) {
+    getTeam = (year: string, team: string, playoffs: boolean) => {
 
         if(playoffs){
             let strLen = year.length;
@@ -42,9 +42,9 @@ export class TeamsService {
             // Make the http request
             return this.http.get(url);
         }
-    }
+    };
 
-    buildTeam(data:any){
+    buildTeam = (data: any) => {
         let team = data;
         return new Team(
             team.team.ID,
@@ -62,9 +62,9 @@ export class TeamsService {
             team.stats.stats.PowerplayPercent['#text'],
             team.stats.stats.PenaltyKillPercent['#text']
         );
-    }
+    };
 
-    buildTeamList(data: any) {
+    buildTeamList = (data: any) => {
         let teams : any[] = [];
 
         //Put all teams into an array
@@ -72,6 +72,6 @@ export class TeamsService {
             teams.push(this.buildTeam(team));
         });
         return teams;
-    }
+    };
 
 }

@@ -8,17 +8,13 @@ import {Goalie} from '../player-objects/goalie';
 @Injectable()
 export class PlayersService {
 
-    url: string;
-
     private players : any[] = [];
     private forwards : Skater[] = [];
     private defenseman : Skater[] = [];
     private goalies : Goalie[] = [];
     private skaters : Skater[] = [];
 
-    constructor(private http: HttpClient) {
-        //this.url = 'api/players/2016-2017-regular';
-    }
+    constructor(private http: HttpClient) {}
 
     /**
      * Call the api and return a list of players that are noit yet formatted
@@ -26,7 +22,7 @@ export class PlayersService {
      * @param playoffs
      * @returns {Observable<Object>}
      */
-    getAllPlayers(year, playoffs) {
+    getAllPlayers = (year, playoffs) => {
         if(playoffs){
             let url = `api/players/playoffs/${year}-regular`;
             return this.http.get(url);
@@ -34,13 +30,13 @@ export class PlayersService {
             let url = `api/players/${year}-regular`;
             return this.http.get(url);
         }
-    }
+    };
 
     /**
      * Return list of only forwards
      * @returns {Skater[]}
      */
-    getForwards(){
+    getForwards = () => {
         _.forEach(this.players, (player) => {
             if( player._position === 'LW'
                 || player._position === 'RW'
@@ -50,52 +46,52 @@ export class PlayersService {
             }
         });
         return this.forwards;
-    }
+    };
 
     /**
      * return list of only defenseman
      * @returns {Skater[]}
      */
-    getDefenseman(){
+    getDefenseman = () => {
         _.forEach(this.players, (player) => {
             if(player._position === 'D'){
                 this.defenseman.push(player);
             }
         });
         return this.defenseman;
-    }
+    };
 
     /**
      * return list of only goalies
      * @returns {Goalie[]}
      */
-    getGoalies(){
+    getGoalies = () =>{
         _.forEach(this.players, (player) => {
             if(player._position === 'G') {
                 this.goalies.push(player);
             }
         });
         return this.goalies;
-    }
+    };
 
-    getSkaters(){
+    getSkaters = () =>{
         _.forEach(this.players, (player) => {
             if(player._position !== 'G') {
                 this.skaters.push(player);
             }
         });
         return this.skaters;
-    }
+    };
 
-    getPlayers(){
+    getPlayers = () => {
         if(this.players.length > 0) {
             return this.players;
         }else{
             return [];
         }
-    }
+    };
 
-    buildPlayerList(data : any){
+    buildPlayerList = (data : any) => {
 
         // Put all players into js array
         _.forEach(data, (player) => {
@@ -103,9 +99,9 @@ export class PlayersService {
         });
 
         return this.players;
-    }
+    };
 
-    buildPlayer(data: any){
+    buildPlayer = (data: any) => {
         let player = data;
         if(player.player.Position !== 'G') {
             return new Skater(
@@ -168,15 +164,15 @@ export class PlayersService {
             )
         }
 
-    }
+    };
 
     // Clear all arrays
-    destroyPlayersList(){
+    destroyPlayersList = () => {
         this.players = [];
         this.forwards  = [];
         this.defenseman  = [];
         this.goalies  = [];
         this.skaters  = [];
-    }
+    };
 
 }
