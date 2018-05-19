@@ -5,6 +5,7 @@ import {PlayersComponent} from './players/players.component';
 import {HomePageComponent} from "./home-page/home-page.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {TeamDetailComponent} from "./teams/team-detail/team-detail.component";
+import {GamelogsComponent} from "./gamelogs/gamelogs.component";
 
 // Configure navigation routes
 const appRoutes: Routes = [
@@ -24,6 +25,11 @@ const appRoutes: Routes = [
     {
         path: 'players',
         component: PlayersComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'gamelogs',
+        component: GamelogsComponent,
         pathMatch: 'full'
     },
     {

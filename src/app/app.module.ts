@@ -20,13 +20,16 @@ import { TeamDetailComponent } from './teams/team-detail/team-detail.component'
 import {AppService} from './app.service';
 import {PlayersService} from './players/services/players.service';
 import {TeamsService} from './teams/services/teams.service';
+import {GamelogsService} from './gamelogs/services/gamelogs.service';
 
 //Modules
 import {AppBootstrapModule} from './app-bootstrap.module';
 import {AppRoutingModule} from './app-routing.module';
-import {PlayerListDetailComponent} from "./players/player-list-detail/player-list-detail.component";
-import {LoadingScreenComponent} from "./loading-screen/loading-screen.component";
-import {TeamSortPipe} from "./utils/column-sort.pipe";
+import {PlayerListDetailComponent} from './players/player-list-detail/player-list-detail.component';
+import {LoadingScreenComponent} from './loading-screen/loading-screen.component';
+import {TeamSortPipe} from './utils/column-sort.pipe';
+import {GamelogsComponent} from './gamelogs/gamelogs.component';
+
 
 // All app components and dependencies
 @NgModule({
@@ -44,7 +47,8 @@ import {TeamSortPipe} from "./utils/column-sort.pipe";
         TeamModalComponent,
         TeamDetailComponent,
         LoadingScreenComponent,
-        TeamSortPipe
+        TeamSortPipe,
+        GamelogsComponent
     ],
     imports: [
         BrowserModule,
@@ -56,7 +60,8 @@ import {TeamSortPipe} from "./utils/column-sort.pipe";
     providers: [
         AppService,
         PlayersService,
-        TeamsService
+        TeamsService,
+        GamelogsService
     ],
     bootstrap: [AppComponent],
     entryComponents :[
