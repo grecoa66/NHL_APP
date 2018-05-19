@@ -16,6 +16,6 @@ router.use('/players', players);
 
 router.use('/teams', teams);
 
-router.use('gamelog', gamelog);
+router.use('/gamelog', gamelog);
 
 module.exports = router;

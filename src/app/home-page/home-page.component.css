@@ -1,12 +1,7 @@
-#aboutMe {
-    border: solid 1px black;
-    padding:4px;
-    margin:5px;
-}
-
 .content-cards {
-    border: solid 1px black;
-    padding:4px;
+    border: solid 2px black;
+    border-radius: 4px;
+    padding:8px;
     margin:5px;
     box-shadow: 3px 5px #8e9090;
     height: 250px;
