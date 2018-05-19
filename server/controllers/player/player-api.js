@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 const playoffs = require('../playoffs/playoffs-api');
 const urlList = require('../../common/url-list');
+const errorHandler = require('../../common/error');
 
 // Path to these endpoints : '/api/players/...'
 
@@ -23,7 +24,8 @@ router.get('/:year', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        sendError(res, error);
+        errorHandler.sendError(res, error);
+        errorHandler.basicErrorHandler(error);
     });
 });
 
@@ -44,17 +46,10 @@ router.get('/:year/:playerName', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        sendError(res, error);
+        errorHandler.basicErrorHandler(error);
+        errorHandler.sendError(res, error);
     });
 });
 
-function sendError(res, error){
-    console.log('ERROR', error.response.data);
-    if (error.response) {
-        res.send(error.response.status);
-    }else{
-        res.send('404');
-    }
-}
 
 module.exports = router;

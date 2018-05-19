@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const urlList = require('../../common/url-list');
+const errorHandler = require('../../common/error');
 
 // Path to these endpoints : 'api/teams/playoffs/...'
 
@@ -27,7 +28,8 @@ router.get('/players/:year/:teamName', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        sendError(res, error);
+        errorHandler.sendError(res, error);
+        errorHandler.basicErrorHandler(error);
     });
 });
 
@@ -49,7 +51,8 @@ router.get('/player/:year/:playerName', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        sendError(res, error);
+        errorHandler.sendError(res, error);
+        errorHandler.basicErrorHandler(error);
     });
 });
 
@@ -71,7 +74,8 @@ router.get('/players/:year', (req, res) => {
     }).then(response => {
         res.send(response.data.cumulativeplayerstats.playerstatsentry);
     }).catch(error => {
-        sendError(res, error);
+        errorHandler.sendError(res, error);
+        errorHandler.basicErrorHandler(error);
     });
 
 });
@@ -104,7 +108,8 @@ router.get('/:year/:teamName', (req, res) => {
             res.send(fullObj);
         }))
         .catch(error => {
-            sendError(res, error);
+            errorHandler.sendError(res, error);
+            errorHandler.basicErrorHandler(error);
         });
 
 });
@@ -129,11 +134,12 @@ router.use('/:year', (req,res) => {
     }).then(response => {
         res.send(response.data.overallteamstandings.teamstandingsentry);
     }).catch(error => {
-       sendError(res, error);
+        errorHandler.sendError(res, error);
+        errorHandler.basicErrorHandler(error);
     });
 });
 
-function getPlayerTeam(fullUrl){
+const getPlayerTeam = (fullUrl) => {
 
     return axios.get(fullUrl, {
         auth: {
@@ -141,24 +147,16 @@ function getPlayerTeam(fullUrl){
             'password': process.env.MYSPORTSFEEDSKEY
         }
     });
-}
+};
 
-function getTeam(fullUrl){
+const getTeam = (fullUrl) => {
     return axios.get(fullUrl, {
         auth: {
             'username': process.env.MYSPORTSFEEDSUSER,
             'password': process.env.MYSPORTSFEEDSKEY
         }
     });
-}
+};
 
-function sendError(res, error){
-    console.log('ERROR', error.response.data);
-    if (error.response) {
-        res.send(error.response.status);
-    }else{
-        res.send('404');
-    }
-}
 
 module.exports = router;
