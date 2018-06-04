@@ -1,0 +1,16 @@
+.gamelog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%
+}
+
+.gamelog-list-game {
+    border: 1px solid black;
+
+}
+
+.game-title{
+
+}

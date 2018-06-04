@@ -1,3 +1,6 @@
-<p>
-  gamelog-list works!
-</p>
+<div class="gamelog-container">
+    <div class="gamelog-list-game" *ngFor="let game of games">
+        <h5 class="gamelog-title">{{game._homeTeamCity}} {{game._homeTeamName}} VS. {{game._awayTeamCity}} {{game._awayTeamName}}</h5>
+        <h6>{{game._homeTeamScore}} </h6> <h6>{{game._awayTeamScore}}</h6>
+    </div>
+</div>
