@@ -29,6 +29,7 @@ import {PlayerListDetailComponent} from './players/player-list-detail/player-lis
 import {LoadingScreenComponent} from './loading-screen/loading-screen.component';
 import {TeamSortPipe} from './utils/column-sort.pipe';
 import {GamelogsComponent} from './gamelogs/gamelogs.component';
+import {GamelogListComponent} from './gamelogs/gamelog-list/gamelog-list.component';
 
 
 // All app components and dependencies
@@ -48,7 +49,8 @@ import {GamelogsComponent} from './gamelogs/gamelogs.component';
         TeamDetailComponent,
         LoadingScreenComponent,
         TeamSortPipe,
-        GamelogsComponent
+        GamelogsComponent,
+        GamelogListComponent
     ],
     imports: [
         BrowserModule,

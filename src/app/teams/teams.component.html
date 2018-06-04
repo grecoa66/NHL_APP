@@ -21,6 +21,7 @@
             <!-- Use of dropDownMenu structural directive-->
             <div >
                 <div class="dropdown-menu" *dropdownMenu >
+                    <a class="dropdown-item" *ngIf="!playoffsEnabled" (click)="getTeams('2017-2018')">2017-2018</a>
                     <a class="dropdown-item" (click)="getTeams('2016-2017')">2016-2017</a>
                     <a class="dropdown-item" (click)="getTeams('2015-2016')">2015-2016</a>
                     <a class="dropdown-item" (click)="getTeams('2014-2015')">2014-2015</a>
@@ -40,6 +41,8 @@
         <button
             class="btn btn-lg btn btn-secondary"
             [class.btn-success]="playoffsEnabled"
+            [class.disabled]="selectedYear == '2017-2018'"
+            [disabled]="selectedYear == '2017-2018'"
             type="button"
             (click)="enablePlayoffs()">Playoffs</button>
     </div>

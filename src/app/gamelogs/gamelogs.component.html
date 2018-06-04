@@ -1,3 +1,9 @@
-<p>
-  gamelogs works!
-</p>
+<div class="gamelog-container">
+    <div class="gamelog-valid-date" *ngIf="dateValid">
+        <div class="gamelog-header">
+            <h2>Games Played on {{dateSelected}}</h2>
+        </div>
+        <app-gamelog-list [games]="games" ></app-gamelog-list>
+    </div>
+
+</div>

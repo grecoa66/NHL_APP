@@ -10,7 +10,7 @@ export class GamelogsService {
     }
 
     getGamelogsForDate = (year: string, date: string) => {
-        let url = `api/gamelog/${year}-regular/${date}`;
+        let url = `api/gamelog/${year}/${date}`;
         return this.http.get(url);
     };
 
