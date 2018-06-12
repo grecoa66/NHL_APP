@@ -3,14 +3,50 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    width: 100%
+    width: 40vw;
+    min-width: 478px;
+}
+
+.gamelog-home-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.gamelog-away-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.gamelog-team {
+    width: 60%;
+}
+
+.gamelog-score {
+    width: 10%;
+}
+
+.gamelog-period-summary {
+    display: flex;
+    flex-flow: column;
+    /*justify-content: ;*/
+}
+
+.gamelog-period-header {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
 }
 
 .gamelog-list-game {
     border: 1px solid black;
-
-}
-
-.game-title{
-
+    border-radius: 4px;
+    margin: 8px 0;
+    box-shadow: 1px 1px 10px #8a2332 ;
+    display: flex;
+    flex-flow: column;
+    padding: 24px;
 }

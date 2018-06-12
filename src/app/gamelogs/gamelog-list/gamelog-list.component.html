@@ -1,6 +1,49 @@
 <div class="gamelog-container">
-    <div class="gamelog-list-game" *ngFor="let game of games">
-        <h5 class="gamelog-title">{{game._homeTeamCity}} {{game._homeTeamName}} VS. {{game._awayTeamCity}} {{game._awayTeamName}}</h5>
-        <h6>{{game._homeTeamScore}} </h6> <h6>{{game._awayTeamScore}}</h6>
-    </div>
+    <section class="gamelog-list-game" *ngFor="let game of games">
+        <div class="gamelog-home-container">
+            <section class="gamelog-team">
+                <h3>{{game._homeTeamCity}} {{game._homeTeamName}} </h3>
+            </section>
+            <section class="gamelog-score">
+                <h4>{{game._homeTeamScore}}</h4>
+            </section>
+        </div>
+        <div class="gamelog-away-container">
+            <section class="gamelog-team">
+                <h3>{{game._awayTeamCity}} {{game._awayTeamName}}</h3>
+            </section>
+            <section class="gamelog-score">
+                <h4>{{game._awayTeamScore}}</h4>
+            </section>
+        </div>
+
+        <div class="gamelog-period-summary">
+            <table class="table">
+                <thead>
+                    <th scope="col"> Summary </th>
+                    <th scope="col"> 1 </th>
+                    <th scope="col"> 2 </th>
+                    <th scope="col"> 3 </th>
+                    <th scope="col" *ngIf="game.periods.length > 3" > OT </th>
+                    <th scope="col"> Final </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{game._homeTeamCity}} {{game._homeTeamName}} </th>
+                        <th *ngFor="let per of game.periods">{{per._homeTeamGoals}}</th>
+                        <th>{{game._homeTeamScore}}</th>
+                    </tr>
+                    <tr>
+                        <th>{{game._awayTeamCity}} {{game._awayTeamName}} </th>
+                        <th *ngFor="let per of game.periods">{{per._awayTeamGoals}}</th>
+                        <th>{{game._awayTeamScore}}</th>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </section>
 </div>
+
+<!--<h5 class="gamelog-title">{{game._homeTeamCity}} {{game._homeTeamName}} VS. {{game._awayTeamCity}} {{game._awayTeamName}}</h5>-->
+<!--<h6>{{game._homeTeamScore}} </h6> <h6>{{game._awayTeamScore}}</h6>-->
